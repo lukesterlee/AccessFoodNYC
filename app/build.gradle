@@ -1,0 +1,88 @@
+apply plugin: 'com.android.application'
+
+Properties properties = new Properties()
+properties.load(project.rootProject.file('local.properties').newDataInputStream())
+def releasePassword = properties.getProperty('releasePassword')
+
+android {
+    compileSdkVersion 24
+    buildToolsVersion "24.0.2"
+
+    defaultConfig {
+        applicationId "c4q.nyc.take2.accessfoodnyc"
+        minSdkVersion 17
+        targetSdkVersion 24
+        versionCode 8
+        versionName "0.0.8"
+    }
+
+
+    signingConfigs {
+        release {
+            storeFile file("release.jks")
+            keyAlias "android"
+            storePassword "$releasePassword"
+            keyPassword "$releasePassword"
+        }
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.release
+        }
+    }
+
+}
+
+repositories {
+    flatDir {
+        dirs 'libs'
+    }
+    mavenCentral()
+}
+
+repositories {
+    mavenCentral()
+}
+
+android {
+    packagingOptions {
+        exclude 'META-INF/LICENSE.txt'
+    }
+}
+
+ext {
+    googleSupportLibraryVersion = '24.2.0'
+    googlePlayServicesVersion = '9.4.0'
+}
+
+dependencies {
+    compile fileTree(dir: 'libs', include: ['*.jar'])
+    compile(name: 'identitytoolkit-api11', ext: 'aar')
+
+
+    compile "com.android.support:appcompat-v7:${googleSupportLibraryVersion}"
+    compile "com.android.support:design:${googleSupportLibraryVersion}"
+    compile "com.android.support:percent:${googleSupportLibraryVersion}"
+
+    compile "com.android.support:recyclerview-v7:${googleSupportLibraryVersion}"
+    compile "com.android.support:cardview-v7:${googleSupportLibraryVersion}"
+    compile "com.android.support:leanback-v17:${googleSupportLibraryVersion}"
+    compile "com.google.android.gms:play-services-maps:${googlePlayServicesVersion}"
+    compile "com.google.android.gms:play-services-location:${googlePlayServicesVersion}"
+    compile 'com.parse.bolts:bolts-android:1.+'
+    compile 'com.squareup.picasso:picasso:2.5.2'
+
+    compile 'com.makeramen:roundedimageview:2.2.0'
+    compile 'com.squareup.retrofit:retrofit:1.9.0'
+    compile 'com.github.shiami:signpost-retrofit:e2bdd9f116'
+    compile 'com.facebook.android:facebook-android-sdk:4.0.0'
+    compile 'com.google.maps.android:android-maps-utils:x.y.z'
+    compile 'com.google.maps.android:android-maps-utils:0.4+'
+    compile 'de.hdodenhof:circleimageview:1.3.0'
+    compile 'org.twitter4j:twitter4j-core:4.0.2'
+    compile 'pl.droidsonroids.gif:android-gif-drawable:1.1.+'
+    compile 'com.lsjwzh:recyclerviewpager:1.0.8'
+}

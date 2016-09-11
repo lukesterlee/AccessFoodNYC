@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="horizontal"
+    android:padding="16dp"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/imageView_friend"
+            android:padding="16dp"
+            android:layout_width="64dp"
+            android:layout_height="64dp" />
+
+    <LinearLayout
+        android:paddingLeft="16dp"
+        android:paddingTop="16dp"
+        android:paddingBottom="16dp"
+        android:orientation="vertical"
+        android:layout_width="fill_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical">
+
+                <TextView
+                    android:paddingLeft="8dp"
+                    android:textSize="18dp"
+                    android:textColor="@color/toolbarTextColorSecondary"
+                    android:id="@+id/name_friend"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:singleLine="true" />
+
+
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:gravity="right|center_vertical">
+
+                <Button
+                    android:textColor="@color/white"
+                    android:text="add"
+                    android:textSize="16dp"
+                    android:paddingLeft="8dp"
+                    android:drawableLeft="@drawable/ic_person_add_white_24dp"
+                    android:id="@+id/button_request"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@color/accentColor"/>
+
+
+            </LinearLayout>
+
+
+
+
+
+
+        </LinearLayout>
+
+        <View
+            android:layout_marginTop="12dp"
+            android:layout_width="fill_parent"
+            android:layout_height="1dp"
+            android:background="@color/dividerColor"/>
+
+
+    </LinearLayout>
+
+
+
+
+
+</LinearLayout>

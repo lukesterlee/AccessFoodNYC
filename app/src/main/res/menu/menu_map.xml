@@ -1,0 +1,38 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="c4q.nyc.take2.accessfoodnyc.MapsActivity">
+
+
+    <item
+        android:icon="@drawable/ic_sort_white_24dp"
+        android:id="@+id/action_sort"
+        android:title="Sort"
+        app:showAsAction="always">
+
+    </item>
+
+    <item
+        android:id="@+id/action_list"
+        android:icon="@drawable/ic_view_list_white_24dp"
+        android:title="List"
+        app:showAsAction="always"/>
+
+    <item
+        android:id="@+id/action_profile"
+        android:title="@string/action_profile"
+        app:showAsAction="never"/>
+
+    <!--<item-->
+        <!--android:id="@+id/action_settings"-->
+        <!--android:title="@string/action_settings"-->
+        <!--android:orderInCategory="100"-->
+        <!--app:showAsAction="never" />-->
+
+    <item
+        android:id="@+id/action_logout"
+        android:title="@string/action_logout"
+        app:showAsAction="never"/>
+
+
+</menu>

@@ -1,0 +1,266 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v4.widget.NestedScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/nestedScrollView">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+
+
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/recyclerView_details_pictures"
+            android:layout_height="250dp"
+            android:layout_width="match_parent"
+            android:layout_alignParentTop="true"
+            android:visibility="gone"/>
+
+        <ImageView
+            android:padding="8dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/yelp_logo"
+            android:src="@drawable/yelp_logo"
+            android:layout_gravity="right"
+            android:visibility="gone"/>
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/vendor_pic"
+            android:layout_width="200dp"
+            android:visibility="gone"
+            android:layout_gravity="center_horizontal"
+            android:layout_height="200dp" />
+
+        <TextView
+            android:paddingTop="16dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/vendor_name"
+            android:textSize="25dp"
+            android:layout_gravity="center_horizontal"
+            android:textColor="#303030" />
+
+
+        <TextView
+            android:paddingLeft="16dp"
+            android:paddingRight="16dp"
+            android:paddingTop="4dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/vendor_address"
+            android:textSize="15dp"
+            android:layout_gravity="center_horizontal"
+            android:textColor="#303030" />
+
+
+        <TextView
+            android:padding="16dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/snippet_text"
+            android:textSize="15dp"
+            android:textColor="#303030"/>
+
+
+        <LinearLayout
+            android:padding="16dp"
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <Button
+                android:textSize="14dp"
+                android:paddingLeft="16dp"
+                android:paddingRight="16dp"
+                android:drawableLeft="@drawable/ic_camera_alt_black_24dp"
+                android:textColor="@color/accentColor"
+                android:text="@string/post_pic"
+                android:layout_marginRight="6dp"
+                android:id="@+id/cbid"
+                android:layout_weight="1"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:background="@drawable/buttons"/>
+
+            <Button
+                android:textSize="14dp"
+                android:text="Favorite"
+                android:textColor="@color/accentColor"
+                android:paddingLeft="16dp"
+                android:paddingRight="16dp"
+                android:drawableLeft="@drawable/ic_favorite_border_black_24dp"
+                android:layout_weight="1"
+                android:id="@+id/button_add"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:background="@drawable/buttons"
+                android:layout_marginLeft="6dp"/>
+
+        </LinearLayout>
+
+
+
+
+
+        <LinearLayout
+            android:padding="16dp"
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <View
+                android:layout_width="fill_parent"
+                android:layout_height="1dp"
+                android:background="@color/dividerColor"/>
+
+
+            <HorizontalScrollView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <LinearLayout
+                        android:id="@+id/followers"
+                        android:paddingTop="16dp"
+                        android:paddingBottom="16dp"
+                        android:paddingRight="16dp"
+                        android:orientation="vertical"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content">
+
+                        <TextView
+                            android:text="0"
+                            android:id="@+id/count_favs"
+                            android:textSize="32dp"
+                            android:textColor="@color/white"
+                            android:gravity="center_horizontal|center_vertical"
+                            android:background="@drawable/circle_corner"
+                            android:layout_width="64dp"
+                            android:layout_height="64dp" />
+
+                        <TextView
+                            android:textSize="14dp"
+                            android:id="@+id/followers_text"
+                            android:paddingTop="4dp"
+                            android:gravity="center_horizontal|center_vertical"
+                            android:textColor="@color/black"
+                            android:text="Followers"
+                            android:layout_width="64dp"
+                            android:layout_height="wrap_content" />
+
+
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:paddingRight="8dp"
+                        android:paddingTop="16dp"
+                        android:paddingBottom="16dp"
+                        android:orientation="vertical"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent">
+
+                        <TextView
+                            android:id="@+id/ratings"
+                            android:textSize="26dp"
+                            android:textColor="@color/white"
+                            android:gravity="center_horizontal|center_vertical"
+                            android:background="@drawable/circle_corner"
+                            android:layout_width="64dp"
+                            android:layout_height="64dp" />
+
+                        <TextView
+                            android:textSize="14dp"
+                            android:id="@+id/number_of_ratings"
+                            android:paddingTop="4dp"
+                            android:gravity="center_vertical|center_horizontal"
+                            android:textColor="@color/black"
+                            android:layout_width="64dp"
+                            android:text="Ratings"
+                            android:layout_height="wrap_content" />
+
+
+
+                    </LinearLayout>
+
+
+
+                    <LinearLayout
+                        android:paddingTop="16dp"
+                        android:paddingBottom="16dp"
+                        android:id="@+id/parent_favorited_friends"
+                        android:orientation="horizontal"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content">
+
+
+
+
+                    </LinearLayout>
+
+
+                </LinearLayout>
+
+
+            </HorizontalScrollView>
+
+            <View
+                android:layout_width="fill_parent"
+                android:layout_height="1dp"
+                android:background="@color/dividerColor"/>
+
+
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:paddingTop="8dp"
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/here"
+                android:paddingLeft="16dp"
+                android:textSize="20dp"
+                android:textColor="@color/black"
+                android:text="@string/friends_review_title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <LinearLayout
+                android:layout_marginTop="16dp"
+                android:orientation="vertical"
+                android:id="@+id/review_container"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+
+
+
+            </LinearLayout>
+
+
+
+        </LinearLayout>
+
+
+
+    </LinearLayout>
+
+
+</android.support.v4.widget.NestedScrollView>
+
+

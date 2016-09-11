@@ -1,0 +1,126 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    tools:context=".MainActivity"
+    android:background="#e7660e"
+    android:configChanges="orientation|keyboard|keyboardHidden|screenSize|screenLayout|uiMode">
+
+
+    <VideoView android:id="@+id/truckvideo"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentTop="true">
+    </VideoView>
+    <!--<VideoView-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="match_parent"-->
+        <!--android:layout_centerInParent="true"-->
+        <!--android:id="@+id/truckvideo"-->
+        <!--/>-->
+
+    <!--<pl.droidsonroids.gif.GifImageView-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="fill_parent"-->
+        <!--android:src="@drawable/truckcrop"-->
+
+        <!--/>-->
+
+    <!--<RelativeLayout-->
+        <!--android:layout_marginTop="22dp"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content">-->
+
+    <!--<ImageView-->
+        <!--android:id="@+id/splash_pic"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:src="@drawable/splash"-->
+        <!--android:layout_gravity="center" />-->
+
+        <!--<TextView-->
+            <!--android:id="@+id/splash_textView1"-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:text="Access Food"-->
+            <!--android:textSize="30sp"-->
+            <!--android:textColor="@color/red"-->
+            <!--android:layout_marginBottom="61dp"-->
+            <!--android:typeface="monospace"-->
+            <!--android:textStyle="bold"-->
+            <!--android:layout_alignBottom="@+id/splash_pic"-->
+            <!--android:layout_centerHorizontal="true" />-->
+
+        <!--<TextView-->
+            <!--android:id="@+id/splash_textView2"-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:text="NYC"-->
+            <!--android:textSize="25sp"-->
+            <!--android:textColor="@color/red"-->
+            <!--android:layout_marginBottom="31dp"-->
+            <!--android:typeface="monospace"-->
+            <!--android:textStyle="bold"-->
+            <!--android:layout_alignBottom="@+id/splash_pic"-->
+            <!--android:layout_centerHorizontal="true" />-->
+
+    <!--</RelativeLayout>-->
+
+    <!--<rayacevedo45.c4q.nyc.accessfoodnyc.vendor.GifView-->
+    <!--android:id="@+id/gif_view"-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="match_parent"-->
+    <!--android:layout_gravity="center"/>-->
+
+</RelativeLayout>
+
+
+    <!--<LinearLayout-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="match_parent"-->
+        <!--android:orientation="vertical"-->
+        <!--android:gravity="bottom">-->
+
+        <!--<ImageView-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:id="@+id/accessID"-->
+            <!--android:src="@drawable/access_img2"-->
+            <!--android:layout_gravity="left"-->
+            <!--android:paddingLeft="30dp"-->
+            <!--android:contentDescription="@string/splash_access" />-->
+
+        <!--<ImageView-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:id="@+id/foodID"-->
+            <!--android:gravity="right"-->
+            <!--android:src="@drawable/food_img2"-->
+            <!--android:layout_gravity="right"-->
+            <!--android:paddingRight="30dp"-->
+            <!--android:paddingTop="20dp"-->
+            <!--android:paddingBottom="20dp"-->
+            <!--android:contentDescription="@string/splash_food" />-->
+
+        <!--<ImageView-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:id="@+id/NYCID"-->
+            <!--android:src="@drawable/nyc_img_2"-->
+            <!--android:layout_gravity="center_horizontal"-->
+            <!--android:paddingBottom="10dp"-->
+            <!--android:contentDescription="@string/splash_nyc" />-->
+
+        <!--<ImageView-->
+            <!--android:id="@+id/nyc_img_splash"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="170dp"-->
+            <!--android:layout_gravity="bottom"-->
+            <!--android:src="@drawable/newyork1_meitu_2"-->
+            <!--android:contentDescription="@string/splash_nyc_pic" />-->
+
+
+
+

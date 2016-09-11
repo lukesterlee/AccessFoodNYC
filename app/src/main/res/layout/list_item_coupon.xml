@@ -1,0 +1,173 @@
+<FrameLayout xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <android.support.v7.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        card_view:cardElevation="6dp"
+        card_view:cardUseCompatPadding="true"
+        card_view:cardCornerRadius="2dp">
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <LinearLayout
+                android:paddingLeft="8dp"
+                android:paddingTop="8dp"
+                android:paddingRight="8dp"
+                android:paddingBottom="4dp"
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <LinearLayout
+                    android:orientation="vertical"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical">
+
+                    <de.hdodenhof.circleimageview.CircleImageView
+                        android:id="@+id/imageView_vendor"
+                        android:layout_width="64dp"
+                        android:layout_height="64dp" />
+
+
+                </LinearLayout>
+
+
+                <LinearLayout
+                    android:orientation="vertical"
+                    android:paddingLeft="8dp"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content">
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <TextView
+                            android:id="@+id/vendor_name"
+                            android:textSize="18dp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textColor="@color/black"
+                            android:layout_centerVertical="true" />
+
+                        <TextView
+                            android:padding="6dp"
+                            android:background="@drawable/rounded_corner"
+                            android:textColor="@color/white"
+                            android:id="@+id/vendor_rating"
+                            android:text="5.0"
+                            android:textSize="14dp"
+                            android:layout_alignParentRight="true"
+                            android:layout_width="36dp"
+                            android:layout_height="32dp"
+                            android:gravity="center_vertical|center_horizontal" />
+
+
+                    </RelativeLayout>
+
+                    <TextView
+                        android:textSize="16dp"
+                        android:id="@+id/textView_address"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:paddingBottom="4dp"
+                        android:textColor="@color/toolbarTextColorSecondary"/>
+
+
+
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:paddingLeft="8dp"
+                android:paddingRight="8dp"
+                android:paddingBottom="8dp"
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+
+
+
+                <ImageView
+                    android:padding="4dp"
+                    android:src="@drawable/ic_redeem_black_18dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+
+
+                <TextView
+                    android:paddingLeft="4dp"
+                    android:textSize="14sp"
+                    android:id="@+id/coupon_details"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/toolbarTextColorSecondary"
+                    android:layout_gravity="center_vertical" />
+
+
+
+
+
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:paddingLeft="8dp"
+                android:paddingRight="8dp"
+                android:paddingBottom="8dp"
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+
+
+
+                <ImageView
+                    android:padding="4dp"
+                    android:src="@drawable/ic_schedule_black_18dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+
+
+                <TextView
+                    android:text="Expiration Date : "
+                    android:paddingLeft="4dp"
+                    android:textSize="14sp"
+                    android:id="@+id/expiration_date"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/toolbarTextColorSecondary"
+                    android:layout_gravity="center_vertical" />
+
+
+
+
+
+            </LinearLayout>
+
+
+
+
+        </LinearLayout>
+
+
+
+
+    </android.support.v7.widget.CardView>
+
+
+
+
+
+</FrameLayout>

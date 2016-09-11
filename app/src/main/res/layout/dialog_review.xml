@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/background_view"
+    android:layout_width="280dp"
+    android:orientation="vertical"
+    android:layout_height="match_parent"
+    android:paddingTop="24dp"
+    android:paddingLeft="24dp"
+    android:paddingRight="24dp">
+
+        <!--<ImageView-->
+            <!--android:id="@+id/review_background_pic"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_marginBottom="-55dp"-->
+            <!--android:scaleType="fitStart"-->
+            <!--android:src="@drawable/reviewpic" />-->
+
+    <TextView
+        android:id="@+id/review_head"
+        android:text="Write your review about this vendor....."
+        android:textSize="20dp"
+        android:textColor="@color/accentColor"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingBottom="20dp"/>
+
+        <!--<TextView-->
+            <!--android:id="@+id/dialog_review_title"-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content" />-->
+
+        <RatingBar
+            android:id="@+id/ratingBarRightPart"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:clickable="true"
+            android:stepSize="1"
+
+
+/>
+
+    <!--android:progressBackgroundTint="@android:color/holo_blue_bright"-->
+    <!--android:progressTint="@android:color/holo_blue_bright"-->
+    <!--android:secondaryProgressTint="@android:color/holo_blue_bright"-->
+
+        <TextView
+            android:id="@+id/dialog_review_rating"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:textStyle="bold"
+            android:textColor="@color/black"/>
+
+        <android.support.design.widget.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@color/accentColor">
+
+            <EditText
+                android:id="@+id/editText_dialog_title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Title"
+                android:textColor="@color/black"/>
+
+        </android.support.design.widget.TextInputLayout>
+
+
+        <android.support.design.widget.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@color/accentColor">
+
+            <EditText
+                android:id="@+id/editText_dialog_description"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Description"
+                android:textColor="@color/black"/>
+
+        </android.support.design.widget.TextInputLayout>
+
+
+    <!--<RelativeLayout-->
+        <!--android:id="@+id/userPic"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="130dp"-->
+        <!--android:background="@color/primaryColor">-->
+
+        <!--<de.hdodenhof.circleimageview.CircleImageView-->
+            <!--android:id="@+id/review_dialog_round_pic"-->
+            <!--android:layout_width="64dp"-->
+            <!--android:layout_height="64dp"-->
+            <!--android:layout_centerHorizontal="true"-->
+            <!--android:layout_centerVertical="true"/>-->
+
+    <!--</RelativeLayout>-->
+
+    <TextView
+        android:text="140"
+        android:textColor="@color/accentColor"
+        android:id="@+id/textView_counter"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+</LinearLayout>

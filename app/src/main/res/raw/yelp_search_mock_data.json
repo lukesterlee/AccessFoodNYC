@@ -1,0 +1,501 @@
+{
+  "region": {
+    "span": {
+      "latitude_delta": 0.07798430098272036,
+      "longitude_delta": 0.07552070217766982
+    },
+    "center": {
+      "latitude": 40.730018890462404,
+      "longitude": -73.99610738100975
+    }
+  },
+  "total": 2487,
+  "businesses": [
+    {
+      "is_claimed": true,
+    "rating": 5.0,
+    "mobile_url": "http://m.yelp.com/biz/the-gogo-grill-new-york",
+    "rating_img_url": "http://s3-media1.fl.yelpcdn.com/assets/2/www/img/f1def11e4e79/ico/stars/v1/stars_5.png",
+    "review_count": 62,
+    "name": "The GoGo Grill",
+    "rating_img_url_small": "http://s3-media1.fl.yelpcdn.com/assets/2/www/img/c7623205d5cd/ico/stars/v1/stars_small_5.png",
+    "url": "http://www.yelp.com/biz/the-gogo-grill-new-york",
+    "is_closed": false,
+    "id": "the-gogo-grill-new-york",
+    "phone": "6464251905",
+    "snippet_text": "I could eat here all day erryday.  And I think I might.\n\nThat bread... as the German idealist philosopher Georg Hegel once said, \"Too fair to worship, too...",
+    "image_url": "http://s3-media2.fl.yelpcdn.com/bphoto/z_qsq_mTbN9PeMe62Fb7yg/ms.jpg",
+    "categories": [
+    [
+    "Food Trucks",
+    "foodtrucks"
+    ]
+    ],
+    "display_phone": "+1-646-425-1905",
+    "rating_img_url_large": "http://s3-media3.fl.yelpcdn.com/assets/2/www/img/22affc4e6c38/ico/stars/v1/stars_large_5.png",
+    "menu_provider": "single_platform",
+    "menu_date_updated": 1439525528,
+    "snippet_image_url": "http://s3-media2.fl.yelpcdn.com/photo/33FK1dGupgQwoNdc9-xv9Q/ms.jpg",
+    "location": {
+      "city": "New York",
+      "display_address": [
+        "Bowling Green Park",
+        "1 Broadway",
+        "Financial District",
+        "New York, NY 10004"
+      ],
+      "geo_accuracy": 9.5,
+      "neighborhoods": [
+        "Financial District"
+      ],
+      "postal_code": "10004",
+      "country_code": "US",
+      "address": [
+        "Bowling Green Park",
+        "1 Broadway"
+      ],
+      "coordinate": {
+        "latitude": 40.7049245,
+        "longitude": -74.013706
+      },
+      "state_code": "NY"
+    }
+    },
+    {
+      "is_claimed": true,
+      "rating": 4.5,
+      "mobile_url": "http://m.yelp.com/biz/the-cinnamon-snail-new-york-2",
+      "rating_img_url": "http://s3-media2.fl.yelpcdn.com/assets/2/www/img/99493c12711e/ico/stars/v1/stars_4_half.png",
+      "review_count": 836,
+      "name": "The Cinnamon Snail",
+      "rating_img_url_small": "http://s3-media2.fl.yelpcdn.com/assets/2/www/img/a5221e66bc70/ico/stars/v1/stars_small_4_half.png",
+      "url": "http://www.yelp.com/biz/the-cinnamon-snail-new-york-2",
+      "is_closed": false,
+      "phone": "8622466431",
+      "snippet_text": "omg I don't even know what to say, I waited so long for the Cinnamon Snail to come to the city when I had some time after it closed down. They really need...",
+      "image_url": "http://s3-media3.fl.yelpcdn.com/bphoto/lR048uWXUYOhk2iPekkIBg/ms.jpg",
+      "categories": [
+        [
+          "Vegan",
+          "vegan"
+        ],
+        [
+          "Food Trucks",
+          "foodtrucks"
+        ],
+        [
+          "Mexican",
+          "mexican"
+        ]
+      ],
+      "display_phone": "+1-862-246-6431",
+      "rating_img_url_large": "http://s3-media4.fl.yelpcdn.com/assets/2/www/img/9f83790ff7f6/ico/stars/v1/stars_large_4_half.png",
+      "id": "the-cinnamon-snail-new-york-2",
+      "snippet_image_url": "http://s3-media1.fl.yelpcdn.com/photo/zAIFv4_NsXnBJFLCDw8J-w/ms.jpg",
+      "location": {
+        "city": "New York",
+        "display_address": [
+          "New York, NY 10001"
+        ],
+        "geo_accuracy": 9.5,
+        "postal_code": "10001",
+        "country_code": "US",
+        "address": [],
+        "coordinate": {
+          "latitude": 40.7451758849959,
+          "longitude": -74.0304349729087
+        },
+        "state_code": "NY"
+      }
+    },
+    {
+      "is_claimed": false,
+      "rating": 4.5,
+      "mobile_url": "http://m.yelp.com/biz/williamsburg-smorgasburg-saturday-brooklyn",
+      "rating_img_url": "http://s3-media2.fl.yelpcdn.com/assets/2/www/img/99493c12711e/ico/stars/v1/stars_4_half.png",
+      "review_count": 642,
+      "name": "Williamsburg Smorgasburg - Saturday",
+      "rating_img_url_small": "http://s3-media2.fl.yelpcdn.com/assets/2/www/img/a5221e66bc70/ico/stars/v1/stars_small_4_half.png",
+      "url": "http://www.yelp.com/biz/williamsburg-smorgasburg-saturday-brooklyn",
+      "is_closed": false,
+      "snippet_text": "I could smell the cookin' down the street and it smelled grand! Oh my! You have to look for the tents inside the park. It has way more tents than the Queens...",
+      "image_url": "http://s3-media4.fl.yelpcdn.com/bphoto/LHV2qO2lHegmxC--FwLwVA/ms.jpg",
+      "categories": [
+        [
+          "Street Vendors",
+          "streetvendors"
+        ],
+        [
+          "Food Trucks",
+          "foodtrucks"
+        ]
+      ],
+      "rating_img_url_large": "http://s3-media4.fl.yelpcdn.com/assets/2/www/img/9f83790ff7f6/ico/stars/v1/stars_large_4_half.png",
+      "id": "williamsburg-smorgasburg-saturday-brooklyn",
+      "snippet_image_url": "http://s3-media1.fl.yelpcdn.com/photo/QE85lPDbkYmGESm6ZU7p1Q/ms.jpg",
+      "location": {
+        "city": "Brooklyn",
+        "display_address": [
+          "East River State Park",
+          "90 Kent Ave",
+          "Williamsburg - North Side",
+          "Brooklyn, NY 11211"
+        ],
+        "geo_accuracy": 9.5,
+        "neighborhoods": [
+          "Williamsburg - North Side"
+        ],
+        "postal_code": "11211",
+        "country_code": "US",
+        "address": [
+          "East River State Park",
+          "90 Kent Ave"
+        ],
+        "coordinate": {
+          "latitude": 40.7205629721902,
+          "longitude": -73.9617797891108
+        },
+        "state_code": "NY"
+      }
+    },
+    {
+      "is_claimed": true,
+      "rating": 4.5,
+      "mobile_url": "http://m.yelp.com/biz/the-halal-guys-new-york-2",
+      "rating_img_url": "http://s3-media2.fl.yelpcdn.com/assets/2/www/img/99493c12711e/ico/stars/v1/stars_4_half.png",
+      "review_count": 6731,
+      "name": "The Halal Guys",
+      "rating_img_url_small": "http://s3-media2.fl.yelpcdn.com/assets/2/www/img/a5221e66bc70/ico/stars/v1/stars_small_4_half.png",
+      "url": "http://www.yelp.com/biz/the-halal-guys-new-york-2",
+      "is_closed": false,
+      "phone": "3475271505",
+      "snippet_text": "Heard sooo many great reviews about the Halal food in NYC and how it was a \"must try.\"  Saw them near Rockefeller Center and the line was insanely long!  A...",
+      "image_url": "http://s3-media1.fl.yelpcdn.com/bphoto/MYeuRsYJrKNfzP_41BqDmQ/ms.jpg",
+      "categories": [
+        [
+          "Food Stands",
+          "foodstands"
+        ],
+        [
+          "Middle Eastern",
+          "mideastern"
+        ],
+        [
+          "Halal",
+          "halal"
+        ]
+      ],
+      "display_phone": "+1-347-527-1505",
+      "rating_img_url_large": "http://s3-media4.fl.yelpcdn.com/assets/2/www/img/9f83790ff7f6/ico/stars/v1/stars_large_4_half.png",
+      "id": "the-halal-guys-new-york-2",
+      "snippet_image_url": "http://s3-media1.fl.yelpcdn.com/photo/sYQoUNkahD14fAJ3Cj3_hQ/ms.jpg",
+      "location": {
+        "city": "New York",
+        "display_address": [
+          "6th Ave & W 53rd St",
+          "Theater District",
+          "New York, NY 10019"
+        ],
+        "geo_accuracy": 9.5,
+        "neighborhoods": [
+          "Theater District",
+          "Midtown West"
+        ],
+        "postal_code": "10019",
+        "country_code": "US",
+        "address": [
+          "6th Ave & W 53rd St"
+        ],
+        "coordinate": {
+          "latitude": 40.7617559582706,
+          "longitude": -73.979229927063
+        },
+        "state_code": "NY"
+      }
+    },
+    {
+      "is_claimed": false,
+      "rating": 4.5,
+      "mobile_url": "http://m.yelp.com/biz/tony-the-dragon-dragonas-new-york",
+      "rating_img_url": "http://s3-media2.fl.yelpcdn.com/assets/2/www/img/99493c12711e/ico/stars/v1/stars_4_half.png",
+      "review_count": 107,
+      "name": "Tony 'The Dragon' Dragonas",
+      "rating_img_url_small": "http://s3-media2.fl.yelpcdn.com/assets/2/www/img/a5221e66bc70/ico/stars/v1/stars_small_4_half.png",
+      "url": "http://www.yelp.com/biz/tony-the-dragon-dragonas-new-york",
+      "is_closed": false,
+      "snippet_text": "My friend Anthony insists on taking us to Manhattan on a regular basis, and dragging us all over town to try different Halal Carts. This concept has become...",
+      "image_url": "http://s3-media2.fl.yelpcdn.com/bphoto/GotgBmR8UzFzNx4RFFZDkw/ms.jpg",
+      "categories": [
+        [
+          "Food Stands",
+          "foodstands"
+        ]
+      ],
+      "rating_img_url_large": "http://s3-media4.fl.yelpcdn.com/assets/2/www/img/9f83790ff7f6/ico/stars/v1/stars_large_4_half.png",
+      "id": "tony-the-dragon-dragonas-new-york",
+      "snippet_image_url": "http://s3-media3.fl.yelpcdn.com/photo/PqPFY8eOa84dIKePILjuoQ/ms.jpg",
+      "location": {
+        "city": "New York",
+        "display_address": [
+          "62nd St and Madison Ave",
+          "Upper East Side",
+          "New York, NY 10065"
+        ],
+        "geo_accuracy": 7.0,
+        "neighborhoods": [
+          "Upper East Side"
+        ],
+        "postal_code": "10065",
+        "country_code": "US",
+        "address": [
+          "62nd St and Madison Ave"
+        ],
+        "coordinate": {
+          "latitude": 40.7654686,
+          "longitude": -73.9700394
+        },
+        "state_code": "NY"
+      }
+    },
+    {
+      "is_claimed": true,
+      "rating": 4.0,
+      "mobile_url": "http://m.yelp.com/biz/lukes-lobster-truck-new-york",
+      "rating_img_url": "http://s3-media4.fl.yelpcdn.com/assets/2/www/img/c2f3dd9799a5/ico/stars/v1/stars_4.png",
+      "review_count": 110,
+      "name": "Luke's Lobster Truck",
+      "rating_img_url_small": "http://s3-media4.fl.yelpcdn.com/assets/2/www/img/f62a5be2f902/ico/stars/v1/stars_small_4.png",
+      "url": "http://www.yelp.com/biz/lukes-lobster-truck-new-york",
+      "is_closed": false,
+      "snippet_text": "Amazing, amazing, amazing!!!! I had a lobster roll on this food truck in Hoboken, NJ. It was just AMAZING!! Everyone should try this place out. I'm going...",
+      "image_url": "http://s3-media3.fl.yelpcdn.com/bphoto/TpkgizF2NjbmuQpfJUwP9w/ms.jpg",
+      "categories": [
+        [
+          "Food Trucks",
+          "foodtrucks"
+        ]
+      ],
+      "rating_img_url_large": "http://s3-media2.fl.yelpcdn.com/assets/2/www/img/ccf2b76faa2c/ico/stars/v1/stars_large_4.png",
+      "id": "lukes-lobster-truck-new-york",
+      "snippet_image_url": "http://s3-media1.fl.yelpcdn.com/photo/z9-gxlCnpsndu2vSXc-55Q/ms.jpg",
+      "location": {
+        "city": "New York",
+        "display_address": [
+          "East Village",
+          "New York, NY 10003"
+        ],
+        "geo_accuracy": 9.5,
+        "neighborhoods": [
+          "East Village"
+        ],
+        "postal_code": "10003",
+        "country_code": "US",
+        "address": [],
+        "coordinate": {
+          "latitude": 40.7269307043738,
+          "longitude": -73.9853264235954
+        },
+        "state_code": "NY"
+      }
+    },
+    {
+      "is_claimed": true,
+      "rating": 4.5,
+      "mobile_url": "http://m.yelp.com/biz/wafels-and-dinges-new-york",
+      "rating_img_url": "http://s3-media2.fl.yelpcdn.com/assets/2/www/img/99493c12711e/ico/stars/v1/stars_4_half.png",
+      "review_count": 1328,
+      "name": "Wafels & Dinges",
+      "rating_img_url_small": "http://s3-media2.fl.yelpcdn.com/assets/2/www/img/a5221e66bc70/ico/stars/v1/stars_small_4_half.png",
+      "url": "http://www.yelp.com/biz/wafels-and-dinges-new-york",
+      "is_closed": false,
+      "phone": "8664297329",
+      "snippet_text": "Delicious. Amazing. Waffle-gasm. Ice cream. Sweets. Fruit toppings. Spekuloos (the original and mouthwatering gingerbread spread). Adjectives and nouns to...",
+      "image_url": "http://s3-media3.fl.yelpcdn.com/bphoto/BD9dXdix-_5UtXX6f4tAVQ/ms.jpg",
+      "categories": [
+        [
+          "Desserts",
+          "desserts"
+        ],
+        [
+          "Food Stands",
+          "foodstands"
+        ],
+        [
+          "Belgian",
+          "belgian"
+        ]
+      ],
+      "display_phone": "+1-866-429-7329",
+      "rating_img_url_large": "http://s3-media4.fl.yelpcdn.com/assets/2/www/img/9f83790ff7f6/ico/stars/v1/stars_large_4_half.png",
+      "id": "wafels-and-dinges-new-york",
+      "snippet_image_url": "http://s3-media3.fl.yelpcdn.com/photo/kdEHHGjB1AdeE4Zqwhefcg/ms.jpg",
+      "location": {
+        "city": "New York",
+        "display_address": [
+          "New York, NY 10011"
+        ],
+        "geo_accuracy": 9.5,
+        "postal_code": "10011",
+        "country_code": "US",
+        "address": [],
+        "coordinate": {
+          "latitude": 40.7464643871173,
+          "longitude": -74.0094900153442
+        },
+        "state_code": "NY"
+      }
+    },
+    {
+      "is_claimed": false,
+      "rating": 4.5,
+      "mobile_url": "http://m.yelp.com/biz/brooklyn-bridge-park-smorgasburg-sunday-brooklyn",
+      "rating_img_url": "http://s3-media2.fl.yelpcdn.com/assets/2/www/img/99493c12711e/ico/stars/v1/stars_4_half.png",
+      "review_count": 341,
+      "name": "Brooklyn Bridge Park Smorgasburg - Sunday",
+      "rating_img_url_small": "http://s3-media2.fl.yelpcdn.com/assets/2/www/img/a5221e66bc70/ico/stars/v1/stars_small_4_half.png",
+      "url": "http://www.yelp.com/biz/brooklyn-bridge-park-smorgasburg-sunday-brooklyn",
+      "is_closed": false,
+      "snippet_text": "Smorgasburg is definitely an event to check out.\nCome hungry - half for the food, half for the experience.\nAnd prepare to spend. Everything is pricey and...",
+      "image_url": "http://s3-media3.fl.yelpcdn.com/bphoto/a3HNqIzYaLBxEe0feozKRQ/ms.jpg",
+      "categories": [
+        [
+          "Street Vendors",
+          "streetvendors"
+        ],
+        [
+          "Food Trucks",
+          "foodtrucks"
+        ]
+      ],
+      "rating_img_url_large": "http://s3-media4.fl.yelpcdn.com/assets/2/www/img/9f83790ff7f6/ico/stars/v1/stars_large_4_half.png",
+      "id": "brooklyn-bridge-park-smorgasburg-sunday-brooklyn",
+      "snippet_image_url": "http://s3-media4.fl.yelpcdn.com/photo/BGbuz648loVyaka1pR5vYA/ms.jpg",
+      "location": {
+        "city": "Brooklyn",
+        "display_address": [
+          "Pier 5",
+          "Brooklyn, NY 11201"
+        ],
+        "geo_accuracy": 9.5,
+        "postal_code": "11201",
+        "country_code": "US",
+        "address": [
+          "Pier 5"
+        ],
+        "coordinate": {
+          "latitude": 40.6945714809248,
+          "longitude": -73.9994653207548
+        },
+        "state_code": "NY"
+      }
+    },
+    {
+      "is_claimed": false,
+      "rating": 4.0,
+      "mobile_url": "http://m.yelp.com/biz/korilla-bbq-new-york",
+      "rating_img_url": "http://s3-media4.fl.yelpcdn.com/assets/2/www/img/c2f3dd9799a5/ico/stars/v1/stars_4.png",
+      "review_count": 464,
+      "name": "Korilla BBQ",
+      "rating_img_url_small": "http://s3-media4.fl.yelpcdn.com/assets/2/www/img/f62a5be2f902/ico/stars/v1/stars_small_4.png",
+      "url": "http://www.yelp.com/biz/korilla-bbq-new-york",
+      "is_closed": false,
+      "snippet_text": "GOOD FOR: Lunch\n\nMENU SELECTION: They make it real simple for you and it works like many restaurant lines these days 1) choose a burrito or bowl (like you...",
+      "image_url": "http://s3-media4.fl.yelpcdn.com/bphoto/KkW5t_PJovIfupKvBMD_cQ/ms.jpg",
+      "categories": [
+        [
+          "Korean",
+          "korean"
+        ],
+        [
+          "Food Trucks",
+          "foodtrucks"
+        ],
+        [
+          "Barbeque",
+          "bbq"
+        ]
+      ],
+      "rating_img_url_large": "http://s3-media2.fl.yelpcdn.com/assets/2/www/img/ccf2b76faa2c/ico/stars/v1/stars_large_4.png",
+      "id": "korilla-bbq-new-york",
+      "snippet_image_url": "http://s3-media2.fl.yelpcdn.com/photo/tivqTA0Y7Ir_wn7Cv9jD1A/ms.jpg",
+      "location": {
+        "city": "New York",
+        "display_address": [
+          "55th and Broadway",
+          "Midtown West",
+          "New York, NY 10019"
+        ],
+        "geo_accuracy": 7.0,
+        "neighborhoods": [
+          "Midtown West"
+        ],
+        "postal_code": "10019",
+        "country_code": "US",
+        "address": [
+          "55th and Broadway"
+        ],
+        "coordinate": {
+          "latitude": 40.7647354605468,
+          "longitude": -73.9822018732251
+        },
+        "state_code": "NY"
+      }
+    },
+    {
+      "is_claimed": true,
+      "rating": 4.5,
+      "mobile_url": "http://m.yelp.com/biz/uncle-gussys-new-york",
+      "rating_img_url": "http://s3-media2.fl.yelpcdn.com/assets/2/www/img/99493c12711e/ico/stars/v1/stars_4_half.png",
+      "review_count": 243,
+      "name": "Uncle Gussy's",
+      "rating_img_url_small": "http://s3-media2.fl.yelpcdn.com/assets/2/www/img/a5221e66bc70/ico/stars/v1/stars_small_4_half.png",
+      "url": "http://www.yelp.com/biz/uncle-gussys-new-york",
+      "is_closed": false,
+      "id": "uncle-gussys-new-york",
+      "phone": "9296001111",
+      "snippet_text": "My family did bad things to me. I don't want to go into it, but let's just say that there is a very, very good reason why we all had to call my father's...",
+      "image_url": "http://s3-media4.fl.yelpcdn.com/bphoto/ML429Oc8WIeL2-1I3HXjYA/ms.jpg",
+      "categories": [
+        [
+          "Greek",
+          "greek"
+        ],
+        [
+          "Modern European",
+          "modern_european"
+        ],
+        [
+          "Caterers",
+          "catering"
+        ]
+      ],
+      "display_phone": "+1-929-600-1111",
+      "rating_img_url_large": "http://s3-media4.fl.yelpcdn.com/assets/2/www/img/9f83790ff7f6/ico/stars/v1/stars_large_4_half.png",
+      "menu_provider": "single_platform",
+      "menu_date_updated": 1416014165,
+      "snippet_image_url": "http://s3-media3.fl.yelpcdn.com/photo/PqPFY8eOa84dIKePILjuoQ/ms.jpg",
+      "location": {
+        "city": "New York",
+        "display_address": [
+          "345 Park Ave",
+          "Midtown East",
+          "New York, NY 10154"
+        ],
+        "geo_accuracy": 8.0,
+        "neighborhoods": [
+          "Midtown East"
+        ],
+        "postal_code": "10154",
+        "country_code": "US",
+        "address": [
+          "345 Park Ave"
+        ],
+        "coordinate": {
+          "latitude": 40.757751,
+          "longitude": -73.972427
+        },
+        "state_code": "NY"
+      }
+    }
+  ]
+}

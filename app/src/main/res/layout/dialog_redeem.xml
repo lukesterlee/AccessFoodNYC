@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="280dp"
+    android:orientation="horizontal"
+    android:layout_height="match_parent"
+    android:layout_margin="16dp"
+    android:background="@color/primaryColor">
+
+    <ImageView
+        android:layout_marginTop="23dp"
+        android:layout_marginLeft="13dp"
+        android:id="@+id/cut_icon"
+        android:src="@drawable/ic_content_cut_black_24dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <LinearLayout
+        android:id="@+id/layout1"
+        android:layout_margin="30dp"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/coupon_box">
+
+        <LinearLayout
+            android:layout_marginTop="25dp"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:orientation="horizontal"
+            android:gravity="center_horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/redeem_amount"
+            android:gravity="center_horizontal|center_vertical"
+            android:textSize="62dp"
+            android:text="20%"
+            android:textStyle="bold"
+            android:textColor="@color/primaryColorDark"
+            android:background="@drawable/circle_coupon"
+            android:layout_gravity="center_horizontal"
+            android:layout_width="150dp"
+            android:layout_height="150dp" />
+
+        <TextView
+            android:text="OFF"
+            android:textSize="26dp"
+            android:textStyle="bold"
+            android:textColor="@color/primaryColorDark"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom" />
+
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/redeem_name"
+            android:paddingTop="16dp"
+            android:gravity="center_horizontal"
+            android:textSize="30dp"
+            android:text="C4Q Tacos"
+            android:textColor="@color/black"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <TextView
+            android:id="@+id/redeem_address"
+            android:layout_marginTop="10dp"
+            android:layout_gravity="center_horizontal"
+            android:text="31-00 47th Ave, Long Island City"
+            android:textColor="@color/toolbarTextColorSecondary"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <TextView
+            android:id="@+id/redeem_expiration"
+            android:layout_marginTop="10dp"
+            android:textColor="@color/black"
+            android:gravity="center_horizontal"
+            android:text="Expiration Date : 05/12/2015"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <LinearLayout
+            android:id="@+id/layout2"
+            android:padding="16dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal">
+
+            <Button
+                android:gravity="center_horizontal|center_vertical"
+                android:id="@+id/button_redeem"
+                android:textColor="@color/white"
+                android:text="Redeem"
+                android:layout_gravity="center_horizontal|bottom"
+                android:background="@drawable/redeem"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+        </LinearLayout>
+    </LinearLayout>
+
+</FrameLayout>

@@ -1,0 +1,345 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:orientation="vertical"
+    tools:context=".LoginActivity">
+
+
+
+    <TextView
+        android:layout_marginTop="20dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="AccessFood"
+        android:textColor="@color/primaryColor"
+        android:textSize="45sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="NYC"
+        android:textColor="@color/primaryColor"
+        android:textSize="40sp"
+        android:textStyle="bold" />
+
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="100dp">
+
+        <ImageView
+            android:id="@+id/usernamefielsimageid"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:src="@drawable/person"
+            android:layout_weight="4" />
+
+
+        <!--<android.support.design.widget.TextInputLayout-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_weight="1">-->
+
+
+        <EditText
+            android:id="@+id/usernameField"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/username_hint"
+            android:textColor="@color/black"
+            android:textColorHint="@color/accentColor"
+            android:layout_weight="1"
+            />
+
+        <!--</android.support.design.widget.TextInputLayout>-->
+
+
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp">
+
+
+        <!--<android.support.design.widget.TextInputLayout-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content">>-->
+
+        <ImageView
+            android:id="@+id/passwordFieldimageid"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:src="@drawable/password"
+            android:layout_weight="4"/>
+
+        <EditText
+            android:id="@+id/passwordField"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/password_hint"
+            android:inputType="textPassword"
+            android:layout_weight="1"
+            android:textColor="@color/black"
+            android:textColorHint="@color/accentColor"/>
+
+        <!--</android.support.design.widget.TextInputLayout>-->
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <!--<android.support.design.widget.TextInputLayout-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content">-->
+
+        <ImageView
+            android:id="@+id/usernameField2imageid"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="4"
+            android:src="@drawable/personadd"
+            android:visibility="gone"/>
+
+        <EditText
+            android:id="@+id/usernameField2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="New Username"
+            android:visibility="gone"
+            android:textColor="@color/black"
+            android:textColorHint="@color/accentColor"
+            android:layout_weight="1"/>
+
+        <!--</android.support.design.widget.TextInputLayout>-->
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <!--<android.support.design.widget.TextInputLayout-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content">-->
+
+        <ImageView
+            android:id="@+id/name_icon"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="2.6"
+            android:visibility="gone"
+            android:src="@drawable/person"
+            />
+
+        <EditText
+            android:id="@+id/first"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/first_name"
+            android:visibility="gone"
+            android:textColor="@color/black"
+            android:textColorHint="@color/accentColor"
+            android:layout_weight="2"/>
+
+        <EditText
+            android:id="@+id/last"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/last_name"
+            android:visibility="gone"
+            android:textColor="@color/black"
+            android:textColorHint="@color/accentColor"
+            android:layout_weight="2"/>
+
+        <!--</android.support.design.widget.TextInputLayout>-->
+
+    </LinearLayout>
+
+
+
+
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp">
+
+
+        <!--<android.support.design.widget.TextInputLayout-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content">-->
+
+        <ImageView
+            android:id="@+id/passwordFieldimageid2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="4"
+            android:src="@drawable/password"
+            android:visibility="gone"/>
+
+
+        <EditText
+            android:id="@+id/passwordField2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="New Password"
+            android:inputType="textPassword"
+            android:visibility="gone"
+            android:layout_weight="1"
+            android:textColor="@color/black"
+            android:textColorHint="@color/accentColor"/>
+
+        <!--</android.support.design.widget.TextInputLayout>-->
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp">
+
+        <!--<android.support.design.widget.TextInputLayout-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content">-->
+
+        <ImageView
+            android:id="@+id/emailFieldIDimageid"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:src="@drawable/email"
+            android:visibility="gone"
+            android:layout_weight="4"/>
+
+        <EditText
+            android:id="@+id/emailFieldID"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/email_hint"
+            android:inputType="textEmailAddress"
+            android:visibility="gone"
+            android:layout_weight="1"
+            android:textColor="@color/black"
+            android:textColorHint="@color/accentColor"/>
+
+        <!--</android.support.design.widget.TextInputLayout>-->
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/layoutID"
+        android:layout_width="match_parent"
+        android:layout_height="fill_parent"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:gravity="bottom"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_centerHorizontal="true"
+            >
+
+            <com.facebook.login.widget.LoginButton
+                android:id="@+id/login_button"
+                android:layout_width="match_parent"
+                android:layout_height="49dp"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="30dp"
+                />
+
+
+        </LinearLayout>
+
+
+
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+
+            <Button
+                android:id="@+id/signupButtonID"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_weight="1"
+                android:background="@color/accentColor"
+                android:onClick="showSignUpFields"
+                android:text="@string/sign_up_text"
+                android:textColor="@color/white"/>
+
+            <Button
+                android:id="@+id/loginButton"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_weight="1"
+                android:background="#4CAF50"
+                android:text="@string/login_button_label"
+                android:textColor="@color/white" />
+
+
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="fill_parent"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:gravity="bottom"
+        android:orientation="horizontal">
+
+        <Button
+
+            android:id="@+id/BackButtonID"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_weight="1"
+            android:background="@color/amber"
+            android:elevation="15dp"
+            android:onClick="back"
+            android:text="Back"
+            android:textColor="#ffffff"
+            android:visibility="gone"
+            style="?android:attr/activatedBackgroundIndicator"/>
+
+        <Button
+
+            android:id="@+id/ContinueButtonID"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_weight="1"
+            android:background="@color/orange"
+            android:elevation="15dp"
+            android:text="Continue"
+            android:textColor="#ffffff"
+            android:visibility="gone" />
+
+
+    </LinearLayout>
+
+
+</LinearLayout>
+
