@@ -5,13 +5,13 @@ properties.load(project.rootProject.file('local.properties').newDataInputStream(
 def releasePassword = properties.getProperty('releasePassword')
 
 android {
-    compileSdkVersion 24
-    buildToolsVersion "24.0.2"
+    compileSdkVersion 25
+    buildToolsVersion "25.0.0"
 
     defaultConfig {
         applicationId "c4q.nyc.take2.accessfoodnyc"
         minSdkVersion 17
-        targetSdkVersion 24
+        targetSdkVersion 25
         versionCode 8
         versionName "0.0.8"
     }
@@ -54,8 +54,8 @@ android {
 }
 
 ext {
-    googleSupportLibraryVersion = '24.2.0'
-    googlePlayServicesVersion = '9.4.0'
+    googleSupportLibraryVersion = '25.0.0'
+    googlePlayServicesVersion = '9.8.0'
 }
 
 dependencies {
@@ -78,6 +78,7 @@ dependencies {
 
     // Awesome Square Libraries
     compile 'com.squareup.retrofit2:retrofit:2.1.0'
+    compile 'com.squareup.retrofit2:converter-gson:2.1.0'
     compile 'com.squareup.picasso:picasso:2.5.2'
 
     compile 'com.makeramen:roundedimageview:2.2.0'
