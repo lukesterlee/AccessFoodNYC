@@ -58,11 +58,10 @@ import java.util.Locale;
 import c4q.nyc.take2.accessfoodnyc.api.yelp.models.Business;
 import c4q.nyc.take2.accessfoodnyc.api.yelp.models.Coordinate;
 import c4q.nyc.take2.accessfoodnyc.api.yelp.models.YelpResponse;
-import c4q.nyc.take2.accessfoodnyc.api.yelp.service.ServiceGenerator;
-import c4q.nyc.take2.accessfoodnyc.api.yelp.service.YelpSearchService;
-import retrofit.Callback;
-import retrofit.RetrofitError;
-import retrofit.client.Response;
+import c4q.nyc.take2.accessfoodnyc.api.yelp.service.YelpSearchInterface;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 
 public class MapsActivity extends AppCompatActivity implements OnMapReadyCallback,
@@ -126,12 +125,8 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
 
         final SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
-        mMap = mapFragment.getMap();
 
         initializeViews();
-
-
-
     }
 
     private void initializeViews() {
@@ -234,10 +229,9 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
         public String TAG = "YelpSearchCallback";
 
         @Override
-        public void success(YelpResponse data, Response response) {
-            Log.d(TAG, "Success");
+        public void onResponse(Call<YelpResponse> call, Response<YelpResponse> response) {
             sApplication = AccessFoodApplication.getInstance();
-            sApplication.sYelpResponse = data;
+            sApplication.sYelpResponse = response.body();
             List<Business> yelpRawList = sApplication.sYelpResponse.getBusinesses();
 
             final ParseUser user = ParseUser.getCurrentUser();
@@ -322,13 +316,13 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
                     return true;
                 }
             });
-
         }
 
         @Override
-        public void failure(RetrofitError error) {
-            Log.e(TAG, error.getMessage());
+        public void onFailure(Call<YelpResponse> call, Throwable t) {
+
         }
+
 
     }
 
@@ -462,7 +456,7 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
 
     @Override
     public void onMapReady(GoogleMap googleMap) {
-
+        mMap = googleMap;
         googleMap.setMyLocationEnabled(true);
         googleMap.setMapType(GoogleMap.MAP_TYPE_NORMAL);
         googleMap.setOnCameraChangeListener(this);
@@ -573,10 +567,9 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
             String state = addresses.get(0).getAdminArea();
             String postalCode = addresses.get(0).getPostalCode();
 
-            YelpSearchService yelpService = ServiceGenerator.createYelpSearchService();
-//        yelpService.searchFoodCarts(String.valueOf(lastLatLng), new YelpSearchCallback());
-            yelpService.searchFoodCarts(address + " " + postalCode, new YelpSearchCallback());
-//        yelpService.searchFoodCarts("3100 47th Ave 11101", new YelpSearchCallback());
+            YelpSearchInterface yelpService = AccessFoodApplication.getInstance().getRetrofit().create(YelpSearchInterface.class);
+            yelpService.searchFoodCarts(address + " " + postalCode, "foodtrucks", 1, 20)
+                    .enqueue(new YelpSearchCallback());
 
         } catch (IOException e) {
             e.printStackTrace();

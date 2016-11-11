@@ -67,20 +67,6 @@ public class LoginActivity extends Activity {
         setContentView(R.layout.activity_login);
 
         FacebookSdk.clearLoggingBehaviors();
-//        mAccessTokenTracker = new AccessTokenTracker() {
-//            @Override
-//            protected void onCurrentAccessTokenChanged(
-//                    AccessToken oldAccessToken,
-//                    AccessToken currentAccessToken) {
-//                // Set the access token using
-//                // currentAccessToken when it's loaded or set.
-//            }
-//        };
-//        // If the access token is available already assign it.
-//        mAccessToken = AccessToken.getCurrentAccessToken();
-
-
-
 
         app = new AccessFoodApplication();
 
@@ -103,8 +89,6 @@ public class LoginActivity extends Activity {
         nameIcon = (ImageView) findViewById(R.id.name_icon);
         first = (EditText) findViewById(R.id.first);
         last = (EditText) findViewById(R.id.last);
-
-
 
         mButtonFacebookLogin.setOnClickListener(new View.OnClickListener() {
             @Override

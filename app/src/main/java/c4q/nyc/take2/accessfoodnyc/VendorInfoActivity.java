@@ -24,11 +24,10 @@ import com.parse.ParseQuery;
 import com.parse.ParseUser;
 
 import c4q.nyc.take2.accessfoodnyc.api.yelp.models.Business;
-import c4q.nyc.take2.accessfoodnyc.api.yelp.service.ServiceGenerator;
-import c4q.nyc.take2.accessfoodnyc.api.yelp.service.YelpBusinessSearchService;
-import retrofit.Callback;
-import retrofit.RetrofitError;
-import retrofit.client.Response;
+import c4q.nyc.take2.accessfoodnyc.api.yelp.service.YelpSearchInterface;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 
 public class VendorInfoActivity extends AppCompatActivity implements ActionBar.TabListener {
@@ -77,8 +76,9 @@ public class VendorInfoActivity extends AppCompatActivity implements ActionBar.T
         });
 
         if (isYelp) {
-            YelpBusinessSearchService yelpBizService = ServiceGenerator.createYelpBusinessSearchService();
-            yelpBizService.searchBusiness(objectId, new YelpBusinessSearchCallback());
+            YelpSearchInterface yelpInterface = AccessFoodApplication.getInstance().getRetrofit().create(YelpSearchInterface.class);
+            yelpInterface.searchBusiness(objectId)
+                    .enqueue(new YelpBusinessSearchCallback());
         } else {
             setupViewPager(mViewPager);
             mViewPager.setOffscreenPageLimit(3);
@@ -168,32 +168,31 @@ public class VendorInfoActivity extends AppCompatActivity implements ActionBar.T
     }
 
     protected class YelpBusinessSearchCallback implements Callback<Business> {
-
-        public String TAG = "YelpBusinessSearchCallback";
-
         @Override
-        public void success(Business business, Response response) {
-            Log.d(TAG, "Success");
+        public void onResponse(Call<Business> call, Response<Business> response) {
+            if (response.isSuccessful()) {
+                Business business = response.body();
+                if (business != null) {
 
-            if (business != null) {
-
-                setupViewPager(mViewPager);
-                mViewPager.setOffscreenPageLimit(3);
-                mTabLayout.setupWithViewPager(mViewPager);
-                mToolbar.setTitle(business.getName());
+                    setupViewPager(mViewPager);
+                    mViewPager.setOffscreenPageLimit(3);
+                    mTabLayout.setupWithViewPager(mViewPager);
+                    mToolbar.setTitle(business.getName());
 //                mCurrentDetailsFragment.onYelpData(business);
 
-                if (mCurrentDetailsFragment != null && isYelp) {
+                    if (mCurrentDetailsFragment != null && isYelp) {
 
-                    mCurrentDetailsFragment.onYelpData(business);
-                } else {
-                    Log.d("YelpDataGenerator", "mCurrentDetailsFragment was null!!!!");
+                        mCurrentDetailsFragment.onYelpData(business);
+                    } else {
+                        Log.d("YelpDataGenerator", "mCurrentDetailsFragment was null!!!!");
+                    }
                 }
             }
         }
+
         @Override
-        public void failure(RetrofitError error) {
-            Log.e(TAG, error.getMessage());
+        public void onFailure(Call<Business> call, Throwable t) {
+
         }
     }
 

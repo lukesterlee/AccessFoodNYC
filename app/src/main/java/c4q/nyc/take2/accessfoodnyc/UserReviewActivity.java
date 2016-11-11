@@ -25,11 +25,10 @@ import java.util.HashMap;
 import java.util.List;
 
 import c4q.nyc.take2.accessfoodnyc.api.yelp.models.Business;
-import c4q.nyc.take2.accessfoodnyc.api.yelp.service.ServiceGenerator;
-import c4q.nyc.take2.accessfoodnyc.api.yelp.service.YelpBusinessSearchService;
-import retrofit.Callback;
-import retrofit.RetrofitError;
-import retrofit.client.Response;
+import c4q.nyc.take2.accessfoodnyc.api.yelp.service.YelpSearchInterface;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class UserReviewActivity extends AppCompatActivity {
 
@@ -67,36 +66,36 @@ public class UserReviewActivity extends AppCompatActivity {
             public void done(List<ParseObject> list, ParseException e) {
 
                 for (final ParseObject review : list) {
-
                     final ParseObject vendor = review.getParseObject(Constants.VENDOR);
                     if (vendor.getParseGeoPoint("location") == null) {
+                        YelpSearchInterface yelpInterface = AccessFoodApplication.getInstance().getRetrofit().create(YelpSearchInterface.class);
+                        yelpInterface.searchBusiness(vendor.getString(Constants.YELP_ID))
+                                .enqueue(new Callback<Business>() {
+                                    @Override
+                                    public void onResponse(Call<Business> call, Response<Business> response) {
+                                        if (response.isSuccessful()) {
+                                            Business business = response.body();
+                                            Vendor truck = new Vendor.Builder(business.getId())
+                                                    .setRating(business.getRating())
+                                                    .setPicture(business.getImageUrl())
+                                                    .setAddress(DetailsFragment.addressGenerator(business).get(0))
+                                                    .isYelp(true).setName(business.getName()).build();
+                                            final Review item = new Review();
+                                            item.setTitle(review.getString("title"));
+                                            item.setDescription(review.getString("description"));
+                                            item.setRating(review.getInt("rating"));
+                                            item.setDate(review.getCreatedAt());
+                                            item.setVendor(truck);
+                                            mAdapter.addReview(item);
+                                        }
+                                    }
 
-                        YelpBusinessSearchService yelpBizService = ServiceGenerator.createYelpBusinessSearchService();
-                        yelpBizService.searchBusiness(vendor.getString(Constants.YELP_ID), new Callback<Business>() {
-                            @Override
-                            public void success(Business business, Response response) {
-                                Vendor truck = new Vendor.Builder(business.getId())
-                                        .setRating(business.getRating())
-                                        .setPicture(business.getImageUrl())
-                                        .setAddress(DetailsFragment.addressGenerator(business).get(0))
-                                        .isYelp(true).setName(business.getName()).build();
-                                final Review item = new Review();
-                                item.setTitle(review.getString("title"));
-                                item.setDescription(review.getString("description"));
-                                item.setRating(review.getInt("rating"));
-                                item.setDate(review.getCreatedAt());
-                                item.setVendor(truck);
-                                mAdapter.addReview(item);
-                            }
+                                    @Override
+                                    public void onFailure(Call<Business> call, Throwable t) {
 
-                            @Override
-                            public void failure(RetrofitError error) {
-
-                            }
-                        });
-
+                                    }
+                                });
                     } else {
-
                         HashMap<String, Object> params = new HashMap<String, Object>();
                         params.put(Constants.VENDOR, vendor);
                         ParseCloud.callFunctionInBackground("averageRatings", params, new FunctionCallback<Float>() {
