@@ -85,7 +85,7 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
     private VendorListAdapter mAdapter;
     public static String businessId;
 
-    public static ParseApplication sApplication;
+    public static AccessFoodApplication sApplication;
 
     // Declare a variable for the cluster manager.
     ClusterManager<MarkerCluster> mClusterManager;
@@ -236,7 +236,7 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
         @Override
         public void success(YelpResponse data, Response response) {
             Log.d(TAG, "Success");
-            sApplication = ParseApplication.getInstance();
+            sApplication = AccessFoodApplication.getInstance();
             sApplication.sYelpResponse = data;
             List<Business> yelpRawList = sApplication.sYelpResponse.getBusinesses();
 
