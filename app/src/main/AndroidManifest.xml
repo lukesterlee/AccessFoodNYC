@@ -137,6 +137,9 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="c4q.nyc.take2.accessfoodnyc.ProfileActivity" />
         </activity>
+        <meta-data
+            android:name="io.fabric.ApiKey"
+            android:value="91695abac3abc4a1c00d53a08768b1c08f15008a" />
     </application>
 
 </manifest>

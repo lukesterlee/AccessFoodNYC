@@ -2,12 +2,14 @@ package c4q.nyc.take2.accessfoodnyc;
 
 import android.app.Application;
 
+import com.crashlytics.android.Crashlytics;
 import com.parse.Parse;
 import com.parse.ParseACL;
 import com.parse.ParseFacebookUtils;
 import com.parse.ParseInstallation;
 
 import c4q.nyc.take2.accessfoodnyc.api.yelp.models.YelpResponse;
+import io.fabric.sdk.android.Fabric;
 import okhttp3.OkHttpClient;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
@@ -30,6 +32,7 @@ public class AccessFoodApplication extends Application {
     @Override
     public void onCreate() {
         super.onCreate();
+        Fabric.with(this, new Crashlytics());
         sInstance = this;
 		/*
 		 * Add Parse initialization code here
