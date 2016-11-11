@@ -35,8 +35,7 @@ import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 
-import c4q.nyc.take2.accessfoodnyc.api.yelp.models.Business;
-import c4q.nyc.take2.accessfoodnyc.api.yelp.service.YelpSearchInterface;
+import c4q.nyc.take2.accessfoodnyc.api.yelp.service.YelpSearchService;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -179,7 +178,7 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
                     ParseObject vendor = review.getParseObject(Constants.VENDOR);
                     if (vendor.getParseGeoPoint("location") == null) {
 
-                        YelpSearchInterface yelpInterface = AccessFoodApplication.getInstance().getRetrofit().create(YelpSearchInterface.class);
+                        YelpSearchService yelpInterface = MainApplication.getInstance().getRetrofit().create(YelpSearchService.class);
                         yelpInterface.searchBusiness(vendor.getString(Constants.YELP_ID))
                                 .enqueue(new Callback<Business>() {
                                     @Override

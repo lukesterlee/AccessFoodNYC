@@ -7,17 +7,19 @@ import com.parse.Parse;
 import com.parse.ParseACL;
 import com.parse.ParseFacebookUtils;
 import com.parse.ParseInstallation;
+import com.yelp.clientlib.connection.YelpAPI;
+import com.yelp.clientlib.connection.YelpAPIFactory;
+import com.yelp.clientlib.entities.SearchResponse;
 
-import c4q.nyc.take2.accessfoodnyc.api.yelp.models.YelpResponse;
 import io.fabric.sdk.android.Fabric;
 import okhttp3.OkHttpClient;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
-public class AccessFoodApplication extends Application {
+public class MainApplication extends Application {
 
-    private static AccessFoodApplication sInstance;
-    public static YelpResponse sYelpResponse;
+    private static MainApplication sInstance;
+    private SearchResponse mSearchResponse;
     private Retrofit mRetrofit;
 
     private static final String BASE_URL = "https://api.yelp.com";
@@ -26,7 +28,9 @@ public class AccessFoodApplication extends Application {
     public static final String TOKEN = "ilXQIAE-HffHzEdxnasVZ1uNrePI8wM-";
     public static final String TOKEN_SECRET = "7I1jh-uEEJuq1akXSm5dkVn6U_w";
 
-    public static AccessFoodApplication getInstance() {
+    private YelpAPI mYelpAPI;
+
+    public static MainApplication getInstance() {
         return sInstance;
     }
     @Override
@@ -49,6 +53,16 @@ public class AccessFoodApplication extends Application {
 
         ParseACL.setDefaultACL(defaultACL, true);
 
+        YelpAPIFactory factory = new YelpAPIFactory(CONSUMER_KEY, CONSUMER_SECRET, TOKEN, TOKEN_SECRET);
+        mYelpAPI = factory.createAPI();
+    }
+
+    public SearchResponse getSearchResponse() {
+        return mSearchResponse;
+    }
+
+    public void setSearchResponse(SearchResponse response) {
+        mSearchResponse = response;
     }
 
     public void setupRetrofit() {
@@ -63,6 +77,10 @@ public class AccessFoodApplication extends Application {
 
     public Retrofit getRetrofit() {
         return mRetrofit;
+    }
+
+    public YelpAPI getYelpAPI() {
+        return mYelpAPI;
     }
 }
 

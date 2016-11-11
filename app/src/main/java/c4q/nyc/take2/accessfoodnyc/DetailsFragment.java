@@ -25,12 +25,11 @@ import com.parse.ParseRelation;
 import com.parse.ParseUser;
 import com.parse.SaveCallback;
 import com.squareup.picasso.Picasso;
+import com.yelp.clientlib.entities.Business;
+import com.yelp.clientlib.entities.Location;
 
 import java.util.ArrayList;
 import java.util.List;
-
-import c4q.nyc.take2.accessfoodnyc.api.yelp.models.Business;
-import c4q.nyc.take2.accessfoodnyc.api.yelp.models.Location;
 
 public class DetailsFragment extends Fragment {
 
@@ -250,9 +249,9 @@ public class DetailsFragment extends Fragment {
     }
 
     public void onYelpData(Business business) {
-        mVendorNameText.setText(business.getName());
+        mVendorNameText.setText(business.name());
         mVendorPicImage.setVisibility(View.VISIBLE);
-        String businessImgUrl = (business.getImageUrl());
+        String businessImgUrl = (business.imageUrl());
         Picasso.with(getActivity()).load(businessImgUrl).into(mVendorPicImage);
         List<String> address = addressGenerator(business);
         if (address.size() >= 2) {
@@ -261,8 +260,8 @@ public class DetailsFragment extends Fragment {
             mTextViewVendorAddress.append(address.get(0));
         }
         mSnippetText = (TextView)getActivity().findViewById(R.id.snippet_text);
-        mId = business.getId();
-        setRatings(business.getRating());
+        mId = business.id();
+        setRatings(business.rating());
     }
 
     public void setRatings(Double rating) {
@@ -282,8 +281,8 @@ public class DetailsFragment extends Fragment {
 
 
     public static List<String> addressGenerator(Business business){
-        Location bizLocation = business.getLocation();
-        addList = bizLocation.getDisplayAddress();
+        Location bizLocation = business.location();
+        addList = bizLocation.displayAddress();
         return addList;
     }
 

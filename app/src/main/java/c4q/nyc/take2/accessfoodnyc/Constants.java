@@ -28,4 +28,6 @@ public class Constants {
     public static final String PARSE_CLASS_COUPON = "Coupon";
     public static final String PARSE_CLASS_FAVORITE = "Favorite";
 
+    public static final int REQUEST_LOCATION = 1;
+
 }

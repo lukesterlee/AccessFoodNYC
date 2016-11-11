@@ -24,7 +24,7 @@
     <uses-permission android:name="c4q.nyc.take2.accessfoodnyc.permission.C2D_MESSAGE" />
 
     <application
-        android:name=".AccessFoodApplication"
+        android:name=".MainApplication"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:theme="@style/AppTheme" >

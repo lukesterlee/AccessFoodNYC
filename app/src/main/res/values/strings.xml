@@ -56,4 +56,5 @@
     <string name="favorites">Favorites</string>
     <string name="post_pic">Post a pic</string>
     <string name="friends_review_title">Here is what your friends say</string>
+    <string name="location_permission_message">Turn on location permission to find food trucks</string>
 </resources>

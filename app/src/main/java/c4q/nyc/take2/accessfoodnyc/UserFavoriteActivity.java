@@ -23,9 +23,8 @@ import com.parse.ParseUser;
 import java.util.Calendar;
 import java.util.List;
 
-import c4q.nyc.take2.accessfoodnyc.api.yelp.models.Business;
 import c4q.nyc.take2.accessfoodnyc.api.yelp.models.Coordinate;
-import c4q.nyc.take2.accessfoodnyc.api.yelp.service.YelpSearchInterface;
+import c4q.nyc.take2.accessfoodnyc.api.yelp.service.YelpSearchService;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -85,7 +84,7 @@ public class UserFavoriteActivity extends AppCompatActivity {
                                 favorites.findInBackground(new FindCallback<ParseObject>() {
                                     @Override
                                     public void done(final List<ParseObject> list, ParseException e) {
-                                        YelpSearchInterface yelpInterface = AccessFoodApplication.getInstance().getRetrofit().create(YelpSearchInterface.class);
+                                        YelpSearchService yelpInterface = MainApplication.getInstance().getRetrofit().create(YelpSearchService.class);
                                         yelpInterface.searchBusiness(vendor.getString(Constants.YELP_ID))
                                                 .enqueue(new Callback<Business>() {
                                                     @Override

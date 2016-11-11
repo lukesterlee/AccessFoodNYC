@@ -48,7 +48,7 @@ public class LoginActivity extends Activity {
     protected Button backButton;
     protected Button continueButton;
     protected LinearLayout layout;
-    protected AccessFoodApplication app;
+    protected MainApplication app;
 
     private LoginButton mButtonFacebookLogin;
     private ImageView nameIcon;
@@ -68,7 +68,7 @@ public class LoginActivity extends Activity {
 
         FacebookSdk.clearLoggingBehaviors();
 
-        app = new AccessFoodApplication();
+        app = new MainApplication();
 
         signUpButton = (Button)findViewById(R.id.signupButtonID);
         usernameEditText = (EditText)findViewById(R.id.usernameField);

@@ -1,22 +1,29 @@
 package c4q.nyc.take2.accessfoodnyc;
 
+import android.Manifest;
 import android.content.Context;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.graphics.Color;
 import android.location.Address;
 import android.location.Geocoder;
 import android.location.Location;
 import android.location.LocationManager;
+import android.net.Uri;
 import android.os.Bundle;
+import android.provider.Settings;
+import android.support.annotation.NonNull;
+import android.support.design.widget.Snackbar;
+import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.RelativeLayout;
 import android.widget.Toast;
 
 import com.facebook.appevents.AppEventsLogger;
@@ -45,6 +52,9 @@ import com.parse.ParseObject;
 import com.parse.ParseQuery;
 import com.parse.ParseRelation;
 import com.parse.ParseUser;
+import com.yelp.clientlib.entities.Business;
+import com.yelp.clientlib.entities.Coordinate;
+import com.yelp.clientlib.entities.SearchResponse;
 
 import java.io.IOException;
 import java.text.DateFormat;
@@ -54,11 +64,8 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
+import java.util.Map;
 
-import c4q.nyc.take2.accessfoodnyc.api.yelp.models.Business;
-import c4q.nyc.take2.accessfoodnyc.api.yelp.models.Coordinate;
-import c4q.nyc.take2.accessfoodnyc.api.yelp.models.YelpResponse;
-import c4q.nyc.take2.accessfoodnyc.api.yelp.service.YelpSearchInterface;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -84,13 +91,12 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
     private VendorListAdapter mAdapter;
     public static String businessId;
 
-    public static AccessFoodApplication sApplication;
-
     // Declare a variable for the cluster manager.
     ClusterManager<MarkerCluster> mClusterManager;
 
     private Toolbar mToolbar;
 
+    private RelativeLayout mContainer;
     private RecyclerView mRecyclerViewList;
     private boolean isListed = false;
     private boolean isLocationOn;
@@ -102,8 +108,8 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        Log.i("MapsActivity", "it creates!!!!!!!!!");
         setContentView(R.layout.activity_maps);
+        MainApplication.getInstance().setupRetrofit();
         isListed = false;
         mToolbar = (Toolbar) findViewById(R.id.tool_bar);
         setSupportActionBar(mToolbar);
@@ -113,7 +119,6 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
         getSupportActionBar().setTitle("Access Food");
 
         markerHashMap = new HashMap<>();
-
         isMarkerClicked = false;
 
         if (checkLocationStatus()) {
@@ -122,7 +127,6 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
             mGoogleApiClient.connect();
         }
 
-
         final SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
 
@@ -130,12 +134,13 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
     }
 
     private void initializeViews() {
+        mContainer = (RelativeLayout) findViewById(R.id.container);
         mRecyclerView = (RecyclerViewPager) findViewById(R.id.recyclerView_grid);
         mRecyclerViewList = (RecyclerView) findViewById(R.id.recyclerView_list);
         mButtonSearchThisArea = (Button) findViewById(R.id.search_this_area);
         mButtonSearchThisArea.setBackgroundColor(Color.argb(125, 3, 169, 244));
 
-        LinearLayoutManager layout = new LinearLayoutManager(getApplicationContext(),LinearLayoutManager.HORIZONTAL,false);
+        LinearLayoutManager layout = new LinearLayoutManager(getApplicationContext(), LinearLayoutManager.HORIZONTAL, false);
         LinearLayoutManager lm = new LinearLayoutManager(this);
         lm.setOrientation(LinearLayoutManager.VERTICAL);
 
@@ -220,114 +225,6 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
         });
 
 
-
-    }
-
-
-    protected class YelpSearchCallback implements Callback<YelpResponse> {
-
-        public String TAG = "YelpSearchCallback";
-
-        @Override
-        public void onResponse(Call<YelpResponse> call, Response<YelpResponse> response) {
-            sApplication = AccessFoodApplication.getInstance();
-            sApplication.sYelpResponse = response.body();
-            List<Business> yelpRawList = sApplication.sYelpResponse.getBusinesses();
-
-            final ParseUser user = ParseUser.getCurrentUser();
-            for (final Business business : yelpRawList) {
-                ParseQuery<ParseObject> query = ParseQuery.getQuery(Constants.PARSE_CLASS_VENDOR);
-                query.whereEqualTo(Constants.YELP_ID, business.getId());
-                query.getFirstInBackground(new GetCallback<ParseObject>() {
-                    @Override
-                    public void done(final ParseObject vendor, ParseException e) {
-                        if (vendor == null || vendor.getString("name") == null) {
-
-                            c4q.nyc.take2.accessfoodnyc.api.yelp.models.Location location = business.getLocation();
-                            Coordinate coordinate = location.getCoordinate();
-                            final double latitude = coordinate.getLatitude();
-                            final double longitude = coordinate.getLongitude();
-                            // create marker
-//                MarkerOptions marker = new MarkerOptions().position(new LatLng(latitude, longitude)).title(business.getName());
-                            final Marker marker = mMap.addMarker(new MarkerOptions().position(new LatLng(latitude, longitude)).title(business.getName())); //...
-//                MarkerCluster mc = new MarkerCluster(latitude, longitude, business.getName(),business.getId());
-//                mClusterManager.addItem(mc);
-                            // Changing marker icon
-                            marker.setIcon(BitmapDescriptorFactory.fromResource(R.drawable.food_truck_red));
-                            //markerHashMap.put(marker, business.getId());
-                            final List<String> address = DetailsFragment.addressGenerator(business);
-
-                            if (vendor == null) {
-                                Vendor truck = new Vendor.Builder(business.getId()).isYelp(true).isLiked(false)
-                                        .setName(business.getName()).setFriends(new ArrayList<ParseObject>())
-                                        .setMarker(marker).setLocation(new ParseGeoPoint(latitude, longitude))
-                                        .setRating(business.getRating()).setPicture(business.getImageUrl())
-                                        .setAddress(address.get(0)).build();
-                                mAdapter.addVendor(truck);
-                            } else {
-                                ParseRelation<ParseUser> friends = user.getRelation("friends");
-                                friends.getQuery().findInBackground(new FindCallback<ParseUser>() {
-                                    @Override
-                                    public void done(List<ParseUser> list, ParseException e) {
-
-                                        ParseQuery<ParseObject> favorites = ParseQuery.getQuery(Constants.PARSE_CLASS_FAVORITE);
-                                        favorites.include(Constants.PARSE_COLUMN_FOLLOWER);
-                                        favorites.whereEqualTo(Constants.VENDOR, vendor).whereContainedIn(Constants.PARSE_COLUMN_FOLLOWER, list);
-                                        favorites.findInBackground(new FindCallback<ParseObject>() {
-                                            @Override
-                                            public void done(List<ParseObject> list, ParseException e) {
-                                                Vendor truck = new Vendor.Builder(business.getId()).isYelp(true).isLiked(false)
-                                                        .setName(business.getName()).setFriends(new ArrayList<ParseObject>())
-                                                        .setMarker(marker).setLocation(new ParseGeoPoint(latitude, longitude))
-                                                        .setRating(business.getRating()).setPicture(business.getImageUrl())
-                                                        .setAddress(address.get(0)).build();
-                                                mAdapter.addVendor(truck);
-                                            }
-                                        });
-
-                                    }
-                                });
-                            }
-                        }
-                    }
-                });
-
-            }
-
-            mMap.setOnMarkerClickListener(new GoogleMap.OnMarkerClickListener() {
-                @Override
-                public boolean onMarkerClick(Marker marker) {
-
-                    isMarkerClicked = true;
-                    int position = mAdapter.getPosition(marker);
-                    marker.setIcon(BitmapDescriptorFactory.fromResource(R.drawable.food_blue));
-                    marker.showInfoWindow();
-                    if (previous != null) {
-                        mAdapter.getItem(previous).getMarker().setIcon(BitmapDescriptorFactory.fromResource(R.drawable.food_truck_red));
-                    }
-                    previous = position;
-                    mRecyclerView.smoothScrollToPosition(position);
-                    isMarkerClicked = false;
-                    //marker.setIcon(BitmapDescriptorFactory.fromResource(R.drawable.food_blue));
-
-                    //previous = position;
-
-                    //mMap.animateCamera(CameraUpdateFactory.newLatLng(marker.getPosition()));
-                    return true;
-                }
-            });
-        }
-
-        @Override
-        public void onFailure(Call<YelpResponse> call, Throwable t) {
-
-        }
-
-
-    }
-
-    protected ClusterManager<MarkerCluster> generateClusterManager(ClusterManager<MarkerCluster> mClusterManager){
-        return mClusterManager;
     }
 
     @Override
@@ -341,7 +238,6 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
         setUpListener(true);
         // Logs 'install' and 'app activate' App Events.
         AppEventsLogger.activateApp(this);
-
     }
 
     public void goToVendorInfoAcvitity(int position) {
@@ -401,17 +297,10 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
         super.onStop();
     }
 
-
-
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.menu_map, menu);
-//
-//        MenuItem searchViewItem = menu.findItem(R.id.action_search);
-//        SearchView searchView = (SearchView) searchViewItem.getActionView();
-//        searchView.setIconifiedByDefault(false);
-
         return true;
     }
 
@@ -457,35 +346,90 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
     @Override
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
-        googleMap.setMyLocationEnabled(true);
         googleMap.setMapType(GoogleMap.MAP_TYPE_NORMAL);
         googleMap.setOnCameraChangeListener(this);
-
     }
 
     @Override
     public void onConnected(Bundle bundle) {
-        LatLng defaultLatLng = new LatLng(Constants.DEFAULT_LATITUDE, Constants.DEFAULT_LONGITUDE);
-
-        mMap.moveCamera(CameraUpdateFactory.newLatLng(defaultLatLng));
-        mMap.animateCamera(CameraUpdateFactory.zoomTo(11));
-
-        if (mRequestingLocationUpdates) {
-            startLocationUpdates();
-        }
-        ParseUser user = ParseUser.getCurrentUser();
-        mLastLocation = LocationServices.FusedLocationApi.getLastLocation(mGoogleApiClient);
-        final ParseGeoPoint point = new ParseGeoPoint(mLastLocation.getLatitude(), mLastLocation.getLongitude());
-
-        user.put("location", point);
-        user.saveInBackground();
-
-        mAdapter = new VendorListAdapter(getApplicationContext(), point);
-        mRecyclerView.setAdapter(mAdapter);
-        mRecyclerViewList.setAdapter(mAdapter);
-        searchVendors(new LatLng(mLastLocation.getLatitude(), mLastLocation.getLongitude()));
+        checkLocationPermission();
     }
 
+    private void forceUser() {
+        Snackbar.make(mContainer,
+                R.string.location_permission_message,
+                Snackbar.LENGTH_INDEFINITE)
+                .setAction("Open Settings", new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        Intent appSettings = new Intent(
+                                Settings.ACTION_APPLICATION_DETAILS_SETTINGS,
+                                Uri.parse("package:" + getPackageName()));
+                        appSettings.addCategory(Intent.CATEGORY_DEFAULT);
+                        appSettings.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                        startActivity(appSettings);
+                    }
+                }).show();
+    }
+
+    private void checkLocationPermission() {
+        if (ActivityCompat.checkSelfPermission(this, android.Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED
+                && ActivityCompat.checkSelfPermission(this, android.Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+            // TODO: Consider calling
+            //    ActivityCompat#requestPermissions
+            // here to request the missing permissions, and then overriding
+            //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
+            //                                          int[] grantResults)
+            // to handle the case where the user grants the permission. See the documentation
+            // for ActivityCompat#requestPermissions for more details.
+            if (ActivityCompat.shouldShowRequestPermissionRationale(this, android.Manifest.permission.ACCESS_COARSE_LOCATION)) {
+                forceUser();
+            } else {
+                ActivityCompat.requestPermissions(this, new String[]{android.Manifest.permission.ACCESS_COARSE_LOCATION, Manifest.permission.ACCESS_FINE_LOCATION}, Constants.REQUEST_LOCATION);
+            }
+        } else {
+            mMap.setMyLocationEnabled(true);
+            LatLng defaultLatLng = new LatLng(Constants.DEFAULT_LATITUDE, Constants.DEFAULT_LONGITUDE);
+            mMap.moveCamera(CameraUpdateFactory.newLatLng(defaultLatLng));
+            mMap.animateCamera(CameraUpdateFactory.zoomTo(11));
+            ParseUser user = ParseUser.getCurrentUser();
+            if (mRequestingLocationUpdates) {
+                LocationListener locationListener = new LocationListener() {
+                    @Override
+                    public void onLocationChanged(Location location) {
+                        mCurrentLocation = location;
+                        mLastUpdateTime = DateFormat.getTimeInstance().format(new Date());
+                    }
+                };
+                LocationServices.FusedLocationApi.requestLocationUpdates(
+                        mGoogleApiClient, mLocationRequest, locationListener);
+            }
+            mLastLocation = LocationServices.FusedLocationApi.getLastLocation(mGoogleApiClient);
+            final ParseGeoPoint point = new ParseGeoPoint(mLastLocation.getLatitude(), mLastLocation.getLongitude());
+
+            user.put("location", point);
+            user.saveInBackground();
+
+            mAdapter = new VendorListAdapter(getApplicationContext(), point);
+            mRecyclerView.setAdapter(mAdapter);
+            mRecyclerViewList.setAdapter(mAdapter);
+            searchVendors(new LatLng(mLastLocation.getLatitude(), mLastLocation.getLongitude()));
+        }
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+            switch (requestCode) {
+                case Constants.REQUEST_LOCATION:
+                    checkLocationPermission();
+                    break;
+            }
+        } else {
+            forceUser();
+        }
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+    }
 
     public void searchVendors(LatLng currentLocation) {
 
@@ -557,37 +501,117 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
         });
 
         Geocoder geocoder;
-        List<Address> addresses = null;
+        List<Address> addresses;
         geocoder = new Geocoder(this, Locale.getDefault());
 
         try {
             addresses = geocoder.getFromLocation(currentLocation.latitude, currentLocation.longitude, 1); // Here 1 represent max location result to returned, by documents it recommended 1 to 5
             String address = addresses.get(0).getAddressLine(0); // If any additional address line present than only, check with max available address lines by getMaxAddressLineIndex()
-            String city = addresses.get(0).getLocality();
-            String state = addresses.get(0).getAdminArea();
             String postalCode = addresses.get(0).getPostalCode();
 
-            YelpSearchInterface yelpService = AccessFoodApplication.getInstance().getRetrofit().create(YelpSearchInterface.class);
-            yelpService.searchFoodCarts(address + " " + postalCode, "foodtrucks", 1, 20)
-                    .enqueue(new YelpSearchCallback());
+            Map<String, String> queryMap = new HashMap<>();
+            queryMap.put("category_filter", "foodtrucks");
+            queryMap.put("sort", "1");
+            queryMap.put("limit", "20");
+            MainApplication.getInstance().getYelpAPI().search(address + " " + postalCode, queryMap)
+                    .enqueue(new Callback<SearchResponse>() {
+                        @Override
+                        public void onResponse(Call<SearchResponse> call, Response<SearchResponse> response) {
+                            if (response.isSuccessful()) {
+                                MainApplication.getInstance().setSearchResponse(response.body());
+                                List<Business> yelpRawList = response.body().businesses();
+
+                                final ParseUser user = ParseUser.getCurrentUser();
+                                for (final Business business : yelpRawList) {
+                                    ParseQuery<ParseObject> query = ParseQuery.getQuery(Constants.PARSE_CLASS_VENDOR);
+                                    query.whereEqualTo(Constants.YELP_ID, business.id());
+                                    query.getFirstInBackground(new GetCallback<ParseObject>() {
+                                        @Override
+                                        public void done(final ParseObject vendor, ParseException e) {
+                                            if (vendor == null || vendor.getString("name") == null) {
+
+                                                com.yelp.clientlib.entities.Location location = business.location();
+                                                Coordinate coordinate = location.coordinate();
+                                                final double latitude = coordinate.latitude();
+                                                final double longitude = coordinate.longitude();
+                                                // create marker
+//                MarkerOptions marker = new MarkerOptions().position(new LatLng(latitude, longitude)).title(business.getName());
+                                                final Marker marker = mMap.addMarker(new MarkerOptions().position(new LatLng(latitude, longitude)).title(business.name())); //...
+//                MarkerCluster mc = new MarkerCluster(latitude, longitude, business.getName(),business.getId());
+//                mClusterManager.addItem(mc);
+                                                // Changing marker icon
+                                                marker.setIcon(BitmapDescriptorFactory.fromResource(R.drawable.food_truck_red));
+                                                //markerHashMap.put(marker, business.getId());
+                                                final List<String> address = DetailsFragment.addressGenerator(business);
+
+                                                if (vendor == null) {
+                                                    Vendor truck = new Vendor.Builder(business.id()).isYelp(true).isLiked(false)
+                                                            .setName(business.name()).setFriends(new ArrayList<ParseObject>())
+                                                            .setMarker(marker).setLocation(new ParseGeoPoint(latitude, longitude))
+                                                            .setRating(business.rating()).setPicture(business.imageUrl())
+                                                            .setAddress(address.get(0)).build();
+                                                    mAdapter.addVendor(truck);
+                                                } else {
+                                                    ParseRelation<ParseUser> friends = user.getRelation("friends");
+                                                    friends.getQuery().findInBackground(new FindCallback<ParseUser>() {
+                                                        @Override
+                                                        public void done(List<ParseUser> list, ParseException e) {
+
+                                                            ParseQuery<ParseObject> favorites = ParseQuery.getQuery(Constants.PARSE_CLASS_FAVORITE);
+                                                            favorites.include(Constants.PARSE_COLUMN_FOLLOWER);
+                                                            favorites.whereEqualTo(Constants.VENDOR, vendor).whereContainedIn(Constants.PARSE_COLUMN_FOLLOWER, list);
+                                                            favorites.findInBackground(new FindCallback<ParseObject>() {
+                                                                @Override
+                                                                public void done(List<ParseObject> list, ParseException e) {
+                                                                    Vendor truck = new Vendor.Builder(business.id()).isYelp(true).isLiked(false)
+                                                                            .setName(business.name()).setFriends(new ArrayList<ParseObject>())
+                                                                            .setMarker(marker).setLocation(new ParseGeoPoint(latitude, longitude))
+                                                                            .setRating(business.rating()).setPicture(business.imageUrl())
+                                                                            .setAddress(address.get(0)).build();
+                                                                    mAdapter.addVendor(truck);
+                                                                }
+                                                            });
+
+                                                        }
+                                                    });
+                                                }
+                                            }
+                                        }
+                                    });
+
+                                }
+
+                                mMap.setOnMarkerClickListener(new GoogleMap.OnMarkerClickListener() {
+                                    @Override
+                                    public boolean onMarkerClick(Marker marker) {
+
+                                        isMarkerClicked = true;
+                                        int position = mAdapter.getPosition(marker);
+                                        marker.setIcon(BitmapDescriptorFactory.fromResource(R.drawable.food_blue));
+                                        marker.showInfoWindow();
+                                        if (previous != null) {
+                                            mAdapter.getItem(previous).getMarker().setIcon(BitmapDescriptorFactory.fromResource(R.drawable.food_truck_red));
+                                        }
+                                        previous = position;
+                                        mRecyclerView.smoothScrollToPosition(position);
+                                        isMarkerClicked = false;
+                                        return true;
+                                    }
+                                });
+                            }
+                        }
+
+                        @Override
+                        public void onFailure(Call<SearchResponse> call, Throwable t) {
+
+                        }
+                    });
 
         } catch (IOException e) {
             e.printStackTrace();
         }
         mMap.moveCamera(CameraUpdateFactory.newLatLng(currentLocation));
         mMap.animateCamera(CameraUpdateFactory.zoomTo(13));
-    }
-
-    protected void startLocationUpdates() {
-        LocationListener locationListener = new LocationListener() {
-            @Override
-            public void onLocationChanged(Location location) {
-                mCurrentLocation = location;
-                mLastUpdateTime = DateFormat.getTimeInstance().format(new Date());
-            }
-        };
-        LocationServices.FusedLocationApi.requestLocationUpdates(
-                mGoogleApiClient, mLocationRequest, locationListener);
     }
 
     @Override
