@@ -9,12 +9,12 @@ import com.parse.ParseInstallation;
 
 import c4q.nyc.take2.accessfoodnyc.api.yelp.models.YelpResponse;
 
-public class ParseApplication extends Application {
+public class AccessFoodApplication extends Application {
 
-    private static ParseApplication sInstance;
+    private static AccessFoodApplication sInstance;
     public static YelpResponse sYelpResponse;
 
-    public static ParseApplication getInstance() {
+    public static AccessFoodApplication getInstance() {
         return sInstance;
     }
     @Override
