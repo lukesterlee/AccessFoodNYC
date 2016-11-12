@@ -64,7 +64,12 @@ repositories {
 
 android {
     packagingOptions {
+        exclude 'META-INF/DEPENDENCIES'
+        exclude 'META-INF/NOTICE'
+        exclude 'META-INF/LICENSE'
         exclude 'META-INF/LICENSE.txt'
+        exclude 'META-INF/NOTICE.txt'
+
     }
 }
 
@@ -106,4 +111,6 @@ dependencies {
     compile('com.crashlytics.sdk.android:crashlytics:2.6.5@aar') {
         transitive = true;
     }
+
+    compile 'com.yelp.clientlib:yelp-android:2.0.0'
 }

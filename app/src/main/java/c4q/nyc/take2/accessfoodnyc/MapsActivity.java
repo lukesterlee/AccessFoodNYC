@@ -73,7 +73,7 @@ import retrofit2.Response;
 
 public class MapsActivity extends AppCompatActivity implements OnMapReadyCallback,
         GoogleApiClient.OnConnectionFailedListener, GoogleApiClient.ConnectionCallbacks,
-        GoogleMap.OnCameraChangeListener, DialogCallback, TouchableWrapper.UpdateMapAfterUserInterection {
+        DialogCallback, TouchableWrapper.UpdateMapAfterUserInterection {
 
     private static final String REQUESTING_LOCATION_UPDATES_KEY = "requesting-location-updates-key";
     private static final String LOCATION_KEY = "location-key";
@@ -346,8 +346,21 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
     @Override
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
-        googleMap.setMapType(GoogleMap.MAP_TYPE_NORMAL);
-        googleMap.setOnCameraChangeListener(this);
+        mMap.setMapType(GoogleMap.MAP_TYPE_NORMAL);
+        LatLng defaultLatLng = new LatLng(Constants.DEFAULT_LATITUDE, Constants.DEFAULT_LONGITUDE);
+        mMap.moveCamera(CameraUpdateFactory.newLatLng(defaultLatLng));
+        mMap.animateCamera(CameraUpdateFactory.zoomTo(11));
+        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+            // TODO: Consider calling
+            //    ActivityCompat#requestPermissions
+            // here to request the missing permissions, and then overriding
+            //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
+            //                                          int[] grantResults)
+            // to handle the case where the user grants the permission. See the documentation
+            // for ActivityCompat#requestPermissions for more details.
+            return;
+        }
+        mMap.setMyLocationEnabled(true);
     }
 
     @Override
@@ -388,12 +401,8 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
                 ActivityCompat.requestPermissions(this, new String[]{android.Manifest.permission.ACCESS_COARSE_LOCATION, Manifest.permission.ACCESS_FINE_LOCATION}, Constants.REQUEST_LOCATION);
             }
         } else {
-            mMap.setMyLocationEnabled(true);
-            LatLng defaultLatLng = new LatLng(Constants.DEFAULT_LATITUDE, Constants.DEFAULT_LONGITUDE);
-            mMap.moveCamera(CameraUpdateFactory.newLatLng(defaultLatLng));
-            mMap.animateCamera(CameraUpdateFactory.zoomTo(11));
             ParseUser user = ParseUser.getCurrentUser();
-            if (mRequestingLocationUpdates) {
+            if (!mRequestingLocationUpdates) {
                 LocationListener locationListener = new LocationListener() {
                     @Override
                     public void onLocationChanged(Location location) {
@@ -645,11 +654,6 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
         outState.putParcelable(LOCATION_KEY, mCurrentLocation);
         outState.putString(LAST_UPDATED_TIME_STRING_KEY, mLastUpdateTime);
         super.onSaveInstanceState(outState);
-    }
-
-    @Override
-    public void onCameraChange(CameraPosition cameraPosition) {
-
     }
 
     private void logOut() {
