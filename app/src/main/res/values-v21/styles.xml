@@ -6,7 +6,6 @@
         <item name="colorPrimaryDark">@color/primaryColorDark</item>
         <item name="android:textColorHint">@color/accentColor</item>
         <item name="android:windowBackground">@color/white</item>
-        <item name="android:navigationBarColor">@color/primaryColor</item>
         <item name="colorAccent">@color/accentColor</item>
         <item name="android:dialogTheme">@style/Theme.AppCompat.Light.Dialog</item>
     </style>

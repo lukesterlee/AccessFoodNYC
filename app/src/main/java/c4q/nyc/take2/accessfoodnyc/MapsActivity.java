@@ -526,7 +526,6 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
                         @Override
                         public void onResponse(Call<SearchResponse> call, Response<SearchResponse> response) {
                             if (response.isSuccessful()) {
-                                MainApplication.getInstance().setSearchResponse(response.body());
                                 List<Business> yelpRawList = response.body().businesses();
 
                                 final ParseUser user = ParseUser.getCurrentUser();

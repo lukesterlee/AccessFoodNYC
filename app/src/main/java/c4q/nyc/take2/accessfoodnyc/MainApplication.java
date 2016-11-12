@@ -9,7 +9,6 @@ import com.parse.ParseFacebookUtils;
 import com.parse.ParseInstallation;
 import com.yelp.clientlib.connection.YelpAPI;
 import com.yelp.clientlib.connection.YelpAPIFactory;
-import com.yelp.clientlib.entities.SearchResponse;
 
 import io.fabric.sdk.android.Fabric;
 import okhttp3.OkHttpClient;
