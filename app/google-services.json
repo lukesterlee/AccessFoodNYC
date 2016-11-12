@@ -1,1 +1,118 @@
-{"project_info":{"project_id":"myapplication-1035","project_number":"853411645","name":"MyApplication"},"client":[{"client_info":{"client_id":"android:rayacevedo45.c4q.nyc.accessfoodnyc","client_type":1,"android_client_info":{"package_name":"rayacevedo45.c4q.nyc.accessfoodnyc"}},"oauth_client":[{"client_id":"853411645-rv674lrkr139etcu7ksqh167cuv55i9f.apps.googleusercontent.com","client_type":1,"android_info":{"package_name":"rayacevedo45.c4q.nyc.accessfoodnyc","certificate_hash":""}}],"services":{"analytics_service":{"status":1},"cloud_messaging_service":{"status":1,"apns_config":[]},"appinvite_service":{"status":1,"other_platform_oauth_client":[]},"google_signin_service":{"status":2},"ads_service":{"status":1}}}],"ARTIFACT_VERSION":"1"}
+{
+  "project_info": {
+    "project_number": "853411645",
+    "firebase_url": "https://myapplication-1035.firebaseio.com",
+    "project_id": "myapplication-1035",
+    "storage_bucket": "myapplication-1035.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:853411645:android:909303d3b06d73d7",
+        "android_client_info": {
+          "package_name": "rayacevedo45.c4q.nyc.accessfoodnyc"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "853411645-uk26kbc9v5203v3hcuka6mndifclc8b0.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCvHSliPAFYQDjI9dW8DFbTfKBm-WLpenU"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:853411645:android:52b90b87c3a996eb",
+        "android_client_info": {
+          "package_name": "c4q.nyc.take2.accessfoodnyc"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "853411645-onth2d9llcqo3qabc9d3qfq66dq6hcr7.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "c4q.nyc.take2.accessfoodnyc",
+            "certificate_hash": "FAB19C4CEE1DACDA32E31B8E2A16F51C1090AEAE"
+          }
+        },
+        {
+          "client_id": "853411645-3jdmpeidu3nmp313tgknal5mjgd68q5k.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "c4q.nyc.take2.accessfoodnyc",
+            "certificate_hash": "54AA0F50B22B6C7C13EA4B7C7421E5B444B7D5C6"
+          }
+        },
+        {
+          "client_id": "853411645-h2mj2l22ma89gnr63otc1bhnirvhcd88.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "c4q.nyc.take2.accessfoodnyc",
+            "certificate_hash": "06414A17605625CAB4CE367250180E5FC18F1E0E"
+          }
+        },
+        {
+          "client_id": "853411645-adcut08kkjkekutlq8hhlsk8p8pj16bn.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "c4q.nyc.take2.accessfoodnyc",
+            "certificate_hash": "B1A0F8DC362474498C6AC253C62240D3F5DE5FD8"
+          }
+        },
+        {
+          "client_id": "853411645-rv674lrkr139etcu7ksqh167cuv55i9f.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "c4q.nyc.take2.accessfoodnyc",
+            "certificate_hash": "9B44794D9405AF78B8DBED7D146BDD24FCC241E4"
+          }
+        },
+        {
+          "client_id": "853411645-uk26kbc9v5203v3hcuka6mndifclc8b0.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCvHSliPAFYQDjI9dW8DFbTfKBm-WLpenU"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "853411645-uk26kbc9v5203v3hcuka6mndifclc8b0.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
