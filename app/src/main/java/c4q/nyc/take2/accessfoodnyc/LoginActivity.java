@@ -6,7 +6,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -57,7 +56,6 @@ public class LoginActivity extends Activity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-
         super.onCreate(savedInstanceState);
 
         // facebook stuff
@@ -133,7 +131,6 @@ public class LoginActivity extends Activity {
                 });
             }
         });
-
 
         loginButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -232,27 +229,6 @@ public class LoginActivity extends Activity {
         });
     }
 
-    private void setUpListeners(boolean isResumed) {
-        if (isResumed) {
-
-        } else {
-
-        }
-    }
-
-    @Override
-    protected void onResume() {
-        super.onResume();
-        setUpListeners(true);
-    }
-
-    @Override
-    protected void onPause() {
-        super.onPause();
-        setUpListeners(false);
-    }
-
-
     @Override
     protected void onStart() {
         super.onStart();
@@ -270,17 +246,6 @@ public class LoginActivity extends Activity {
         return true;
     }
 
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-//        int id = item.getItemId();
-//        if (id == R.id.action_settings) {
-//            return true;
-//        }
-        return super.onOptionsItemSelected(item);
-    }
     public void showSignUpFields (View v){
         mButtonFacebookLogin.setVisibility(View.GONE);
         usernameEditText.setVisibility(View.GONE);
@@ -339,21 +304,4 @@ public class LoginActivity extends Activity {
         startActivity(intent);
         finish();
     }
-
-    private void goToProfileActivity() {
-        Intent intent = new Intent(LoginActivity.this, ProfileActivity.class);
-        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
-        startActivity(intent);
-    }
 }
-
-
-
-
-
-
-
-
-
-
