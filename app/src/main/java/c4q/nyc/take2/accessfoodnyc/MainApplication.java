@@ -19,7 +19,6 @@ import retrofit2.converter.gson.GsonConverterFactory;
 public class MainApplication extends Application {
 
     private static MainApplication sInstance;
-    private SearchResponse mSearchResponse;
     private Retrofit mRetrofit;
 
     private static final String BASE_URL = "https://api.yelp.com";
@@ -55,14 +54,6 @@ public class MainApplication extends Application {
 
         YelpAPIFactory factory = new YelpAPIFactory(CONSUMER_KEY, CONSUMER_SECRET, TOKEN, TOKEN_SECRET);
         mYelpAPI = factory.createAPI();
-    }
-
-    public SearchResponse getSearchResponse() {
-        return mSearchResponse;
-    }
-
-    public void setSearchResponse(SearchResponse response) {
-        mSearchResponse = response;
     }
 
     public void setupRetrofit() {

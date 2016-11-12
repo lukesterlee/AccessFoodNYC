@@ -12,7 +12,6 @@ import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.WindowManager;
-import android.widget.ImageView;
 import android.widget.VideoView;
 
 import com.facebook.AccessToken;
@@ -21,9 +20,6 @@ import com.facebook.FacebookSdk;
 import com.parse.ParseUser;
 
 public class SplashActivity extends Activity {
-    ImageView accessIM, foodIM, NYCim;
-    GifView gifView;
-
     CallbackManager callbackManager;
 
     @Override
@@ -31,37 +27,22 @@ public class SplashActivity extends Activity {
         super.onCreate(savedInstanceState);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
                 WindowManager.LayoutParams.FLAG_FULLSCREEN);
-//        setContentView(new GifView(this));
 
         setContentView(R.layout.activity_splash);
 
         View decorView = getWindow().getDecorView();
-// Hide both the navigation bar and the status bar.
-// SYSTEM_UI_FLAG_FULLSCREEN is only available on Android 4.1 and higher, but as
-// a general rule, you should design your app to hide the status bar whenever you
-// hide the navigation bar.
+        // Hide both the navigation bar and the status bar.
+        // SYSTEM_UI_FLAG_FULLSCREEN is only available on Android 4.1 and higher, but as
+        // a general rule, you should design your app to hide the status bar whenever you
+        // hide the navigation bar.
         int uiOptions = View.SYSTEM_UI_FLAG_HIDE_NAVIGATION
                 | View.SYSTEM_UI_FLAG_FULLSCREEN;
         decorView.setSystemUiVisibility(uiOptions);
 
-//        accessIM = (ImageView) findViewById(R.id.accessID);
-//        foodIM = (ImageView) findViewById(R.id.foodID);
-//        NYCim = (ImageView) findViewById(R.id.NYCID);
-
         try{
-//            VideoView videoHolder = new VideoView(this);
-//            setContentView(videoHolder);
-//            Uri video = Uri.parse("android.resource://" + getPackageName() + "/"
-//                    + R.raw.accessfood2);
-//            videoHolder.setVideoURI(video);
-
             VideoView videoHolder = (VideoView) findViewById(R.id.truckvideo);
-//            MediaController mediaController = new MediaController(this);
-//            mediaController.setAnchorView(videoHolder);
             Uri video = Uri.parse("android.resource://" + getPackageName() + "/"
                     + R.raw.accessfood);
-//            videoHolder.setMediaController(mediaController);
-//            videoHolder.setMediaController(new MediaController(this));
             videoHolder.setVideoURI(video);
             videoHolder.requestFocus();
             videoHolder.start();
@@ -78,15 +59,8 @@ public class SplashActivity extends Activity {
             jump();
         }
 
-
-//         gifView = (GifView) findViewById(R.id.gif_view);
-
-
-
-
         FacebookSdk.sdkInitialize(getApplicationContext());
         callbackManager = CallbackManager.Factory.create();
-
 
         if (isUserLoggedIn()) {
             goToMapsActivity();
@@ -110,8 +84,6 @@ public class SplashActivity extends Activity {
                 }
             }, 5000);
         }
-
-
     }
 
     private boolean isUserLoggedIn() {
@@ -157,31 +129,10 @@ public class SplashActivity extends Activity {
         finish();
     }
 
-//    static class GifView extends View {
-//        Movie movie;
-//
-//        GifView(Context context) {
-//            super(context);
-//            movie = Movie.decodeStream(
-//                    context.getResources().openRawResource(
-//                            R.drawable.truckgif));
-//        }
-//        @Override
-//        protected void onDraw(Canvas canvas) {
-//            if (movie != null) {
-//                movie.setTime(
-//                        (int) SystemClock.uptimeMillis() % movie.duration());
-//                movie.draw(canvas, 0, 0);
-//                invalidate();
-//            }
-//        }
-//    }
-
     private void jump() {
-//it is safe to use this code even if you
-//do not intend to allow users to skip the splash
-        if(isFinishing())
-            return;
+        //it is safe to use this code even if you
+        //do not intend to allow users to skip the splash
+        if(isFinishing()) return;
         startActivity(new Intent(this, LoginActivity.class));
         finish();
     }
@@ -198,6 +149,4 @@ public class SplashActivity extends Activity {
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
                 WindowManager.LayoutParams.FLAG_FULLSCREEN);
     }
-
-
 }
