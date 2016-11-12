@@ -22,12 +22,11 @@ import com.parse.ParseException;
 import com.parse.ParseObject;
 import com.parse.ParseQuery;
 import com.parse.ParseUser;
+import com.yelp.clientlib.entities.Business;
 
-import c4q.nyc.take2.accessfoodnyc.api.yelp.service.YelpSearchService;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
-
 
 public class VendorInfoActivity extends AppCompatActivity implements ActionBar.TabListener {
 
@@ -75,8 +74,7 @@ public class VendorInfoActivity extends AppCompatActivity implements ActionBar.T
         });
 
         if (isYelp) {
-            YelpSearchService yelpInterface = MainApplication.getInstance().getRetrofit().create(YelpSearchService.class);
-            yelpInterface.searchBusiness(objectId)
+            MainApplication.getInstance().getYelpAPI().getBusiness(objectId)
                     .enqueue(new YelpBusinessSearchCallback());
         } else {
             setupViewPager(mViewPager);
@@ -176,7 +174,7 @@ public class VendorInfoActivity extends AppCompatActivity implements ActionBar.T
                     setupViewPager(mViewPager);
                     mViewPager.setOffscreenPageLimit(3);
                     mTabLayout.setupWithViewPager(mViewPager);
-                    mToolbar.setTitle(business.getName());
+                    mToolbar.setTitle(business.name());
 //                mCurrentDetailsFragment.onYelpData(business);
 
                     if (mCurrentDetailsFragment != null && isYelp) {

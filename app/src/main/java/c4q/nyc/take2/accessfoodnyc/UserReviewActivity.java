@@ -19,12 +19,12 @@ import com.parse.ParseException;
 import com.parse.ParseObject;
 import com.parse.ParseQuery;
 import com.parse.ParseUser;
+import com.yelp.clientlib.entities.Business;
 
 import java.util.Calendar;
 import java.util.HashMap;
 import java.util.List;
 
-import c4q.nyc.take2.accessfoodnyc.api.yelp.service.YelpSearchService;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -67,18 +67,17 @@ public class UserReviewActivity extends AppCompatActivity {
                 for (final ParseObject review : list) {
                     final ParseObject vendor = review.getParseObject(Constants.VENDOR);
                     if (vendor.getParseGeoPoint("location") == null) {
-                        YelpSearchService yelpInterface = MainApplication.getInstance().getRetrofit().create(YelpSearchService.class);
-                        yelpInterface.searchBusiness(vendor.getString(Constants.YELP_ID))
+                        MainApplication.getInstance().getYelpAPI().getBusiness(vendor.getString(Constants.YELP_ID))
                                 .enqueue(new Callback<Business>() {
                                     @Override
                                     public void onResponse(Call<Business> call, Response<Business> response) {
                                         if (response.isSuccessful()) {
                                             Business business = response.body();
-                                            Vendor truck = new Vendor.Builder(business.getId())
-                                                    .setRating(business.getRating())
-                                                    .setPicture(business.getImageUrl())
+                                            Vendor truck = new Vendor.Builder(business.id())
+                                                    .setRating(business.rating())
+                                                    .setPicture(business.imageUrl())
                                                     .setAddress(DetailsFragment.addressGenerator(business).get(0))
-                                                    .isYelp(true).setName(business.getName()).build();
+                                                    .isYelp(true).setName(business.name()).build();
                                             final Review item = new Review();
                                             item.setTitle(review.getString("title"));
                                             item.setDescription(review.getString("description"));

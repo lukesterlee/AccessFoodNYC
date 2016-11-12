@@ -19,12 +19,12 @@ import com.parse.ParseObject;
 import com.parse.ParseQuery;
 import com.parse.ParseRelation;
 import com.parse.ParseUser;
+import com.yelp.clientlib.entities.Business;
+import com.yelp.clientlib.entities.Coordinate;
 
 import java.util.Calendar;
 import java.util.List;
 
-import c4q.nyc.take2.accessfoodnyc.api.yelp.models.Coordinate;
-import c4q.nyc.take2.accessfoodnyc.api.yelp.service.YelpSearchService;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -84,19 +84,18 @@ public class UserFavoriteActivity extends AppCompatActivity {
                                 favorites.findInBackground(new FindCallback<ParseObject>() {
                                     @Override
                                     public void done(final List<ParseObject> list, ParseException e) {
-                                        YelpSearchService yelpInterface = MainApplication.getInstance().getRetrofit().create(YelpSearchService.class);
-                                        yelpInterface.searchBusiness(vendor.getString(Constants.YELP_ID))
+                                        MainApplication.getInstance().getYelpAPI().getBusiness(vendor.getString(Constants.YELP_ID))
                                                 .enqueue(new Callback<Business>() {
                                                     @Override
                                                     public void onResponse(Call<Business> call, Response<Business> response) {
                                                         if (response.isSuccessful()) {
                                                             Business business = response.body();
-                                                            Coordinate coordinate = business.getLocation().getCoordinate();
-                                                            ParseGeoPoint location = new ParseGeoPoint(coordinate.getLatitude(), coordinate.getLongitude());
-                                                            Vendor truck = new Vendor.Builder(business.getId())
-                                                                    .isYelp(true).isLiked(true).setName(business.getName())
+                                                            Coordinate coordinate = business.location().coordinate();
+                                                            ParseGeoPoint location = new ParseGeoPoint(coordinate.latitude(), coordinate.longitude());
+                                                            Vendor truck = new Vendor.Builder(business.id())
+                                                                    .isYelp(true).isLiked(true).setName(business.name())
                                                                     .setAddress(DetailsFragment.addressGenerator(business).get(0))
-                                                                    .setPicture(business.getImageUrl()).setRating(business.getRating())
+                                                                    .setPicture(business.imageUrl()).setRating(business.rating())
                                                                     .setLocation(location).setFriends(list).build();
                                                             mAdapter.addVendor(truck);
                                                         }
@@ -107,6 +106,7 @@ public class UserFavoriteActivity extends AppCompatActivity {
 
                                                     }
                                                 });
+
                                     }
                                 });
 
